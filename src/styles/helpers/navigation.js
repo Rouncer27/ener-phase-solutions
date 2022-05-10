@@ -6,7 +6,7 @@ export const Nav1Base = `
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.5;
+  line-height: normal;
   letter-spacing: normal;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -37,7 +37,7 @@ export const Nav1Blue = `
 
 export const Nav1Grey = `
   ${Nav1Base};
-  color: ${colors.colorAccent};
+  color: #2c2d2f;
 `
 
 export const Nav2Base = `
