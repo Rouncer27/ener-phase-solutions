@@ -13,9 +13,9 @@ const IndexPage = props => {
   const hero = props?.data?.hero?.template?.homeTemplate
     ? props?.data?.hero?.template?.homeTemplate
     : null
-  const trust = props.data.trust.template.homeTemplate
-  const threeBoxes = props.data.threeBoxes.template.homeTemplate
-  const partner = props.data.partner.template.homeTemplate
+  const trust = props?.data?.trust?.template?.homeTemplate
+  const threeBoxes = props?.data?.threeBoxes?.template?.homeTemplate
+  const partner = props?.data?.partner?.template?.homeTemplate
   return (
     <Layout>
       <Seo title="Home" />
