@@ -3,9 +3,7 @@ import styled from "styled-components"
 import {
   colors,
   H2White,
-  H3Black,
   H3GunMetal,
-  medWrapper,
   standardWrapper,
 } from "../../../styles/helpers"
 
