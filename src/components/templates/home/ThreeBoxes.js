@@ -11,7 +11,6 @@ import {
 import { Link } from "gatsby"
 
 const ThreeBoxes = ({ data }) => {
-  console.log("ThreeBoxes data: ", data)
   return (
     <SectionStyled>
       <div className="wrapper">

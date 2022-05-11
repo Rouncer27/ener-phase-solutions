@@ -32,7 +32,6 @@ const HeaderMenu = () => {
     : []
   const navItems = allNavItems.filter(item => item.parentDatabaseId === 0)
   const subItems = allNavItems.filter(item => item.parentDatabaseId !== 0)
-  console.log("subItems", subItems)
   const navItemsWithSubs = navItems?.map(item => {
     let itemWithSubs = []
     if (subItems.length !== 0) {
@@ -43,8 +42,6 @@ const HeaderMenu = () => {
     item.subItems = itemWithSubs
     return item
   })
-
-  console.log(navItemsWithSubs)
 
   const headerNavigation = navItems ? (
     navItemsWithSubs.length > 0 ? (
