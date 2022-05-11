@@ -24,7 +24,6 @@ const getData = graphql`
 
 const MainLogo = () => {
   const data = useStaticQuery(getData)
-  console.log("data: ", data)
   const image = getImage(
     data?.logo?.acfOptionsSiteWideSettings?.siteWideSettings?.mainLogo
       ?.localFile?.childImageSharp?.gatsbyImageData
