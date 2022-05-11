@@ -28,6 +28,8 @@ const HeaderMenu = () => {
   const data = useStaticQuery(getData)
   const { headerMenuTop } = data
   const allNavItems = headerMenuTop?.menuItems?.nodes
+    ? headerMenuTop?.menuItems?.nodes
+    : []
   const navItems = allNavItems.filter(item => item.parentDatabaseId === 0)
   const subItems = allNavItems.filter(item => item.parentDatabaseId !== 0)
   console.log("subItems", subItems)
