@@ -30,8 +30,8 @@ const HeaderMenu = () => {
   const allNavItems = headerMenuTop?.menuItems?.nodes
   const navItems = allNavItems.filter(item => item.parentDatabaseId === 0)
   const subItems = allNavItems.filter(item => item.parentDatabaseId !== 0)
-  const navItemsWithSubs = navItems.map(item => {
-    const itemWithSubs = subItems.filter(
+  const navItemsWithSubs = navItems?.map(item => {
+    const itemWithSubs = subItems?.filter(
       subItem => subItem.parentDatabaseId === item.databaseId
     )
     item.subItems = itemWithSubs
