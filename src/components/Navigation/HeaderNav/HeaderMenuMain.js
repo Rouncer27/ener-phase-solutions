@@ -30,19 +30,26 @@ const HeaderMenu = () => {
   const allNavItems = headerMenuTop?.menuItems?.nodes
   const navItems = allNavItems.filter(item => item.parentDatabaseId === 0)
   const subItems = allNavItems.filter(item => item.parentDatabaseId !== 0)
+  console.log("subItems", subItems)
   const navItemsWithSubs = navItems?.map(item => {
-    const itemWithSubs = subItems?.filter(
-      subItem => subItem.parentDatabaseId === item.databaseId
-    )
+    let itemWithSubs = []
+    if (subItems.length !== 0) {
+      itemWithSubs = subItems.filter(
+        subItem => subItem.parentDatabaseId === item.databaseId
+      )
+    }
     item.subItems = itemWithSubs
     return item
   })
+
+  console.log(navItemsWithSubs)
+
   const headerNavigation = navItems ? (
     navItemsWithSubs.length > 0 ? (
       <HeaderNavStyled role="navigation" aria-label="primary">
         <ul className="mainNavWrapper">
           {navItemsWithSubs.map(item => {
-            return <HeaderNavItem key={item.id} item={item} top={true} />
+            return <HeaderNavItem key={item?.id} item={item} top={true} />
           })}
         </ul>
       </HeaderNavStyled>
