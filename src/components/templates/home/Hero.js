@@ -2,8 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import {
   colors,
+  H1LightKhaki,
   H2White,
   H3GunMetal,
+  HomeHeaderWhite,
   standardWrapper,
 } from "../../../styles/helpers"
 
@@ -13,7 +15,20 @@ const Hero = ({ data }) => {
   const bgImg = data.heroImage
   return (
     <HeroContentSection>
-      <StyledSection>{bgImg && <HeroImage bgImg={bgImg} />}</StyledSection>
+      <StyledSection>
+        {bgImg && <HeroImage bgImg={bgImg} />}
+
+        <div className="home-hero-title">
+          <h1>
+            <span className="title title-small">Your</span>
+            <span className="title title-large">Power System</span>
+            <span className="title title-large">Reliability</span>
+            <span className="title title-small">is our priority</span>
+          </h1>
+        </div>
+        <div className="home-hero-overlay" />
+      </StyledSection>
+
       <div className="wrapper">
         <div className="hero-top-box">
           <div dangerouslySetInnerHTML={{ __html: data.heroBoxContent }} />
@@ -37,6 +52,42 @@ const StyledSection = styled.div`
 
   @media (min-width: 1025px) {
     height: 85rem;
+  }
+
+  .home-hero-title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+
+    h1 {
+      width: 85rem;
+      margin: 10rem auto;
+      .title {
+        display: block;
+      }
+      .title-small {
+        ${H1LightKhaki};
+      }
+
+      .title-large {
+        ${HomeHeaderWhite};
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .home-hero-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(188deg, #000 5%, transparent 100%);
+    z-index: 5;
   }
 `
 

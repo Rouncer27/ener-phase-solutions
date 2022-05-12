@@ -75,6 +75,7 @@ const SectionStyled = styled.section`
 
   .projects-links {
     width: 100%;
+    padding-top: 3.5rem;
     text-align: center;
 
     a {
