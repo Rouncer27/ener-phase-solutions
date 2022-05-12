@@ -13,6 +13,7 @@ const DisplayTestimonials = ({ data }) => {
       <div className="wrapper">
         <div className="testimonial-title">
           <h3>
+            <span>&#8220;</span>
             Client
             <br /> Words
           </h3>
@@ -45,13 +46,25 @@ const StyledDiv = styled.div`
 
   .wrapper {
     ${standardWrapper};
+    align-items: center;
   }
 
   .testimonial-title {
     width: 20%;
+    padding-right: 4rem;
+    text-align: right;
 
     h3 {
       ${H4Green};
+      padding-top: 5rem;
+      text-transform: uppercase;
+
+      span {
+        display: block;
+        font-size: 20rem;
+        font-weight: normal;
+        line-height: 0;
+      }
     }
   }
 
@@ -59,6 +72,10 @@ const StyledDiv = styled.div`
     width: 80%;
     padding: 4.8rem 6.6rem;
     background-color: ${colors.colorSecondary};
+
+    @media (min-width: 768px) {
+      max-width: 70rem;
+    }
 
     p {
       ${H3GunMetal};

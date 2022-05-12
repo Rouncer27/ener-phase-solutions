@@ -88,6 +88,7 @@ const StyledSection = styled.section`
 
   .article-wrapper {
     position: relative;
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     z-index: 10;
@@ -143,6 +144,7 @@ const StyledSection = styled.section`
 
 const PostCard = styled.div`
   width: 100%;
+  margin: 2.5rem auto;
   background-color: #f0f0f0;
 
   @media (min-width: 768px) {

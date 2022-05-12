@@ -100,7 +100,11 @@ const StyledFooter = styled.footer`
     padding-bottom: 7.5rem;
 
     .foot-nav {
-      width: 20%;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: 20%;
+      }
 
       p {
         ${B1White};
@@ -121,7 +125,13 @@ const StyledFooter = styled.footer`
     .foot-social {
       display: flex;
       align-items: center;
-      width: 50%;
+      width: 100%;
+      margin-top: 4rem;
+
+      @media (min-width: 768px) {
+        width: 50%;
+        margin-top: auto;
+      }
 
       &__icons {
         width: 30%;
@@ -130,10 +140,13 @@ const StyledFooter = styled.footer`
       &__logo {
         position: relative;
         width: 70%;
-        padding: 3rem 3rem 3rem 7.1rem;
+        padding: 2rem;
         background-color: ${colors.white};
         border-top-left-radius: 2.4rem;
         border-bottom-left-radius: 2.4rem;
+        @media (min-width: 768px) {
+          padding: 3rem 3rem 3rem 7.1rem;
+        }
 
         &::before {
           position: absolute;
@@ -177,8 +190,8 @@ const StyledIcon = styled.li`
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     background-color: ${colors.colorPrimary};
 
@@ -210,8 +223,8 @@ const StyledIcon = styled.li`
 
     svg {
       display: block;
-      width: 4rem;
-      height: 4rem;
+      width: 1.75rem;
+      height: 1.75rem;
       margin: auto;
       transition: all 0.3s ease-out;
       fill: ${colors.white};

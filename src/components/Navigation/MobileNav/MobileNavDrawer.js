@@ -54,8 +54,8 @@ const NavDrawer = styled.div`
     to bottom,
     ${colors.white} 0%,
     ${colors.white} 10.5rem,
-    ${colors.colorSecondary} 10.5rem,
-    ${colors.colorSecondary} 100%
+    ${colors.colorPrimary} 10.5rem,
+    ${colors.colorPrimary} 100%
   );
   opacity: ${props => (props.isOpen ? 1 : 0)};
   z-index: ${props => (props.isOpen ? 9999999 : -9999999)};

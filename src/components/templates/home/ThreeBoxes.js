@@ -58,11 +58,13 @@ const BoxStyled = styled.div`
   display: flex;
   position: relative;
   width: 100%;
+  margin: 2.5rem auto;
   border-radius: 0.5rem;
   box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
 
   @media (min-width: 768px) {
-    width: 33.33333333%;
+    width: calc(33.33333333% - 2rem);
+    margin: 1rem;
   }
 
   @media (min-width: 1025px) {

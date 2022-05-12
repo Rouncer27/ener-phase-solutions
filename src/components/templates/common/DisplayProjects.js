@@ -70,6 +70,7 @@ const SectionStyled = styled.section`
 
   .projects-wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
@@ -88,6 +89,7 @@ const SectionStyled = styled.section`
 const Project = styled.div`
   position: relative;
   width: 100%;
+  margin: 2.5rem auto;
   overflow: hidden;
 
   @media (min-width: 768px) {
