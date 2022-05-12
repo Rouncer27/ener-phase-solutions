@@ -4,13 +4,17 @@ import React from "react"
 import styled from "styled-components"
 import {
   B1GunMetal,
+  Btn1One,
   H1Black,
   H4GunMetal,
-  medWrapper,
+  standardWrapper,
 } from "../../../styles/helpers"
 
-const DisplayPosts = ({ data }) => {
-  console.log("DisplayPosts: ", data)
+const DisplayPosts = ({ data, bgImg }) => {
+  const bgImageDisplay = getImage(
+    bgImg.localFile.childImageSharp.gatsbyImageData
+  )
+  const bgImageAlt = bgImg.altText
   return (
     <StyledSection>
       <div className="wrapper">
@@ -51,13 +55,26 @@ const DisplayPosts = ({ data }) => {
           })}
         </div>
       </div>
+      <div className="article-hero">
+        <GatsbyImage
+          image={bgImageDisplay}
+          alt={bgImageAlt}
+          layout="fullWidth"
+          formats={["auto", "webp", "avif"]}
+        />
+      </div>
+      <div className="article-overlay" />
     </StyledSection>
   )
 }
 
 const StyledSection = styled.section`
+  position: relative;
+  padding-top: 7.5rem;
+  padding-bottom: 17.5rem;
+
   .wrapper {
-    ${medWrapper};
+    ${standardWrapper};
   }
 
   .article-title {
@@ -70,14 +87,63 @@ const StyledSection = styled.section`
   }
 
   .article-wrapper {
+    position: relative;
     display: flex;
     justify-content: center;
+    z-index: 10;
+  }
+
+  .article-hero {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50rem;
+    z-index: -1;
+
+    @media (min-width: 768px) {
+      height: 45rem;
+    }
+
+    @media (min-width: 1025px) {
+      height: 58rem;
+    }
+
+    .gatsby-image-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% + 3.5vw);
+      height: 100%;
+
+      img {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .article-overlay {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50rem;
+    background-color: rgba(0, 0, 0, 0.62);
+    z-index: 1;
+
+    @media (min-width: 768px) {
+      height: 45rem;
+    }
+
+    @media (min-width: 1025px) {
+      height: 58rem;
+    }
   }
 `
 
 const PostCard = styled.div`
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: #f0f0f0;
 
   @media (min-width: 768px) {
     width: calc(50% - 2rem);
@@ -102,6 +168,11 @@ const PostCard = styled.div`
     p {
       ${B1GunMetal};
     }
+  }
+
+  a {
+    ${Btn1One};
+    background-color: #f0f0f0;
   }
 `
 

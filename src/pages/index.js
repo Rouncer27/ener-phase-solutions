@@ -34,7 +34,9 @@ const IndexPage = props => {
         <DisplayTestimonials data={testimonials} />
       )}
       {displays.displayProjects && <DisplayProjects data={projects} />}
-      {displays.displayArticles && <DisplayPosts data={posts} />}
+      {displays.displayArticles && (
+        <DisplayPosts data={posts} bgImg={displays.displayArticlesHeroImage} />
+      )}
     </Layout>
   )
 }
@@ -143,6 +145,15 @@ export const homeQuery = graphql`
             displayProjects
             displayTestimonials
             displayArticles
+            displayArticlesHeroImage {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 2500)
+                }
+              }
+            }
           }
         }
       }

@@ -2,7 +2,12 @@ import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-import { BigWrapper, Btn1One, H1SeaWeedGreen } from "../../../styles/helpers"
+import {
+  B1White,
+  BigWrapper,
+  Btn1One,
+  H1SeaWeedGreen,
+} from "../../../styles/helpers"
 
 const DisplayProjects = ({ data }) => {
   return (
@@ -21,7 +26,7 @@ const DisplayProjects = ({ data }) => {
             return (
               <Project key={index}>
                 <Link to={`/projects/${project.node.slug}`}>
-                  <div>
+                  <div className="project-image">
                     <GatsbyImage
                       image={imageDisplay}
                       alt={imageAlt}
@@ -29,7 +34,7 @@ const DisplayProjects = ({ data }) => {
                       formats={["auto", "webp", "avif"]}
                     />
                   </div>
-                  <div>
+                  <div className="project-title">
                     <p>{project.node.title}</p>
                     <p>{project.node.project.projectType}</p>
                   </div>
@@ -48,6 +53,8 @@ const DisplayProjects = ({ data }) => {
 }
 
 const SectionStyled = styled.section`
+  padding-top: 5rem;
+
   .wrapper {
     ${BigWrapper};
   }
@@ -78,11 +85,44 @@ const SectionStyled = styled.section`
 `
 
 const Project = styled.div`
+  position: relative;
   width: 100%;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     width: calc(33.333333% - 1rem);
     margin: 1rem 0.5rem;
+  }
+
+  .project-image {
+    padding: relative;
+    z-index: 1;
+  }
+
+  .project-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 2.3rem 1.8rem;
+    background-color: rgba(54, 170, 99, 0.65);
+    transform: translateY(100%);
+    transition: all 0.3s ease-out;
+    z-index: 10;
+
+    p {
+      ${B1White};
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    .project-title {
+      transform: translateY(0%);
+    }
   }
 `
 
