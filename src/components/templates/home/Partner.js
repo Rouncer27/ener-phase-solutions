@@ -11,7 +11,6 @@ import {
 } from "../../../styles/helpers"
 
 const Partner = ({ data }) => {
-  console.log("Partner data: ", data)
   return (
     <StyledSection>
       <div className="wrapper">
@@ -77,6 +76,7 @@ const StyledSection = styled.section`
 
   .partner-para {
     width: 100%;
+    padding-bottom: 5rem;
 
     .partner-content {
       p {
@@ -92,9 +92,33 @@ const StyledSection = styled.section`
   }
 
   .partner-stats {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+
+    &::before,
+    &::after {
+      display: block;
+      position: absolute;
+      background-color: ${colors.colorSecondary};
+      content: "";
+    }
+
+    &::before {
+      width: 100%;
+      top: 50%;
+      height: 0.1rem;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      width: 0.1rem;
+      top: 0%;
+      bottom: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 `
 

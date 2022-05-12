@@ -125,3 +125,8 @@ export const H4GunMetal = css`
   ${H4Base};
   color: ${colors.colorTertiary};
 `
+
+export const H4Green = css`
+  ${H4Base};
+  color: ${colors.colorPrimary};
+`

@@ -1,6 +1,5 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
@@ -8,6 +7,9 @@ import Hero from "../components/templates/home/Hero"
 import Trust from "../components/templates/home/Trust"
 import ThreeBoxes from "../components/templates/home/ThreeBoxes"
 import Partner from "../components/templates/home/Partner"
+import DisplayTestimonials from "../components/templates/common/DisplayTestimonials"
+import DisplayProjects from "../components/templates/common/DisplayProjects"
+import DisplayPosts from "../components/templates/common/DisplayPosts"
 
 const IndexPage = props => {
   const hero = props?.data?.hero?.template?.homeTemplate
@@ -16,22 +18,23 @@ const IndexPage = props => {
   const trust = props?.data?.trust?.template?.homeTemplate
   const threeBoxes = props?.data?.threeBoxes?.template?.homeTemplate
   const partner = props?.data?.partner?.template?.homeTemplate
+  const displays = props?.data?.displays?.template?.homeTemplate
+  const testimonials = props?.data?.testimonials?.edges
+  const projects = props?.data?.projects?.edges
+  const posts = props?.data?.posts?.edges
+
   return (
     <Layout>
       <Seo title="Home" />
-      {/* <StaticImage
-          src="../images/example.png"
-          loading="eager"
-          width={64}
-          quality={95}
-          formats={["auto", "webp", "avif"]}
-          alt=""
-          style={{ marginBottom: `var(--space-3)` }}
-        /> */}
       <Hero data={hero} />
       <Trust data={trust} />
       <ThreeBoxes data={threeBoxes} />
       <Partner data={partner} />
+      {displays.displayTestimonials && (
+        <DisplayTestimonials data={testimonials} />
+      )}
+      {displays.displayProjects && <DisplayProjects data={projects} />}
+      {displays.displayArticles && <DisplayPosts data={posts} />}
     </Layout>
   )
 }
@@ -124,6 +127,74 @@ export const homeQuery = graphql`
                   childImageSharp {
                     gatsbyImageData(width: 750)
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    displays: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          templateName
+          homeTemplate {
+            displayProjects
+            displayTestimonials
+            displayArticles
+          }
+        }
+      }
+    }
+
+    testimonials: allWpTestimonial {
+      edges {
+        node {
+          testimonials {
+            testimonialContent
+          }
+          title
+        }
+      }
+    }
+
+    projects: allWpProjectSingle {
+      edges {
+        node {
+          title
+          slug
+          project {
+            projectType
+            featuredImage {
+              altText
+              sourceUrl
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    posts: allWpPost {
+      edges {
+        node {
+          slug
+          title
+          post {
+            articleExcerpt
+            featuredImage {
+              altText
+              sourceUrl
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
                 }
               }
             }
