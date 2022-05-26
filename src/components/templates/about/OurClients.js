@@ -51,7 +51,7 @@ const OurClients = ({ data }) => {
           <div className="client-list-names">
             {data.clientsLists.map((list, i) => {
               return (
-                <div
+                <ul
                   className={`${
                     activeList === i + 1 ? "active-list-item" : ""
                   } client-list-names__group`}
@@ -59,15 +59,20 @@ const OurClients = ({ data }) => {
                   key={i}
                 >
                   {list.clients.map((client, index) => {
+                    console.log("client: ", client)
                     return (
-                      <div key={index}>
-                        <div>
-                          <p>{client.name}</p>
-                        </div>
-                      </div>
+                      <li key={index}>
+                        {client.url ? (
+                          <a target="_blank" rel="noreferrer" href={client.url}>
+                            {client.name}
+                          </a>
+                        ) : (
+                          client.name
+                        )}
+                      </li>
                     )
                   })}
-                </div>
+                </ul>
               )
             })}
           </div>
@@ -185,8 +190,17 @@ const StyledSection = styled.section`
     &__group {
       display: none;
 
-      p {
+      li {
         ${B1White};
+        margin-bottom: 0.5rem;
+
+        a {
+          ${B1White};
+
+          &:hover {
+            color: ${colors.colorSecondary};
+          }
+        }
       }
     }
 

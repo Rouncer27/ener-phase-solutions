@@ -1,7 +1,6 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import {
   B1White,
   colors,
