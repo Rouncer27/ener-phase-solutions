@@ -28,7 +28,7 @@ const DivStyled = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% + 3.5vw);
+    width: calc(100%);
     height: 100%;
 
     img {
