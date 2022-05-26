@@ -41,9 +41,9 @@ const OurClients = ({ data }) => {
                   key={index}
                   onClick={() => handleSetListActive(index + 1)}
                 >
-                  <div>
-                    <h3>{list.title}</h3>
-                  </div>
+                  <h3>
+                    {list.title} <span>&#8594;</span>
+                  </h3>
                 </div>
               )
             })}
@@ -72,6 +72,7 @@ const OurClients = ({ data }) => {
             })}
           </div>
         </div>
+        <div className="bg-graphic" />
       </div>
     </StyledSection>
   )
@@ -80,6 +81,26 @@ const OurClients = ({ data }) => {
 const StyledSection = styled.section`
   .wrapper {
     ${medWrapper};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-graphic {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0rem;
+    width: 5rem;
+    height: 40rem;
+    background-color: rgba(54, 170, 99, 0.64);
+
+    @media (min-width: 768px) {
+      display: block;
+      top: 0;
+      left: -2rem;
+      width: 8rem;
+      height: 65rem;
+    }
   }
 
   .title {
@@ -105,10 +126,26 @@ const StyledSection = styled.section`
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+
+    @media (min-width: 768px) {
+      padding: 0 2rem;
+    }
+
+    @media (min-width: 1025px) {
+      padding: 0 6rem;
+    }
   }
 
   .client-list-nav {
-    width: calc(50%);
+    position: relative;
+    width: calc(100%);
+    margin-bottom: 4rem;
+
+    @media (min-width: 768px) {
+      width: calc(50%);
+      margin-bottom: 0;
+    }
+
     &__item {
       width: 100%;
       border: solid 1px #000;
@@ -119,14 +156,31 @@ const StyledSection = styled.section`
         ${H3GunMetal};
         margin: 0;
         padding: 0;
+        text-transform: uppercase;
+
+        span {
+          color: ${colors.colorAccent};
+        }
+      }
+    }
+
+    .client-list-nav__item.active-list-title {
+      background-color: ${colors.black};
+
+      h3 {
+        color: ${colors.white};
       }
     }
   }
 
   .client-list-names {
-    width: calc(50%);
+    width: calc(100%);
     padding: 5rem 9rem;
     background-color: ${colors.black};
+
+    @media (min-width: 768px) {
+      width: calc(50%);
+    }
 
     &__group {
       display: none;
