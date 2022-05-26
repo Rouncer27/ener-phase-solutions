@@ -9,6 +9,7 @@ import Values from "../components/templates/about/Values"
 import PageHero from "../components/templates/about/PageHero"
 import Team from "../components/templates/about/Team"
 import SideContent from "../components/templates/about/SideContent"
+import OurClients from "../components/templates/about/OurClients"
 
 const About = props => {
   return (
@@ -19,6 +20,7 @@ const About = props => {
       <PageHero data={props.data.pageHero.template.aboutTemplate} />
       <Team data={props.data.team.template.aboutTemplate} />
       <SideContent data={props.data.sideContent.template.aboutTemplate} />
+      <OurClients data={props.data.ourClients.template.aboutTemplate} />
     </Layout>
   )
 }
@@ -106,6 +108,16 @@ export const aboutTempQuery = graphql`
       template {
         ... on WpTemplate_About {
           aboutTemplate {
+            teamBackgroundImage {
+              altText
+              sourceUrl
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 2500)
+                }
+              }
+            }
             leadershipTeamMembers {
               firstName
               lastName
@@ -160,6 +172,24 @@ export const aboutTempQuery = graphql`
                     gatsbyImageData(width: 1500)
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    ourClients: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_About {
+          aboutTemplate {
+            clientsListsContent
+            clientsListsTitle
+            clientsLists {
+              title
+              clients {
+                name
+                url
               }
             }
           }

@@ -6,7 +6,6 @@ import HeroImage from "../common/HeroImage"
 import { colors, H1LightKhaki, B1White } from "../../../styles/helpers"
 
 const PageHero = ({ data }) => {
-  console.log("PageHero: ", data)
   const bgImg = data.pageHeroImage
   return (
     <SectionStyled>

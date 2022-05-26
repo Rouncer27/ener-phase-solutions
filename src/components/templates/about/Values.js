@@ -1,16 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import {
-  B1Black,
   B1GunMetal,
   H1SeaWeedGreen,
-  H3Black,
   H3GunMetal,
   medWrapper,
 } from "../../../styles/helpers"
 
 const Values = ({ data }) => {
-  console.log("Values: ", data)
   return (
     <StyledSection>
       <div className="wrapper">
