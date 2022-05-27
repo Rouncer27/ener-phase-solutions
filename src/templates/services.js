@@ -15,12 +15,18 @@ const Services = props => {
   return (
     <Layout>
       <Seo title="Services Page" />
-      <Intro data={props.data.intro} />
-      <BlackContent data={props.data.blackContent} />
-      <ContentBlocks data={props.data.contentBlocks} />
-      <ServicesList data={props.data.servicesList} />
-      <TestimonialSlider data={props.data.testimonialSlider} />
-      <DisplayProjects data={props.data.displayProjects} />
+      <Intro data={props.data.intro.template.servicesTemplate} />
+      <BlackContent data={props.data.blackContent.template.servicesTemplate} />
+      <ContentBlocks
+        data={props.data.contentBlocks.template.servicesTemplate}
+      />
+      <ServicesList data={props.data.servicesList.template.servicesTemplate} />
+      <TestimonialSlider
+        data={props.data.testimonialSlider.template.servicesTemplate}
+      />
+      <DisplayProjects
+        data={props.data.displayProjects.template.servicesTemplate}
+      />
     </Layout>
   )
 }
