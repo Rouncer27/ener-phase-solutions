@@ -11,7 +11,6 @@ import TestimonialSlider from "../components/templates/services/TestimonialSlide
 import DisplayProjects from "../components/templates/services/DisplayProjects"
 
 const Services = props => {
-  console.log("Services: ", props.data)
   return (
     <Layout>
       <Seo title="Services Page" />

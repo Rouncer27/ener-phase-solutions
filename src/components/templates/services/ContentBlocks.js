@@ -14,7 +14,6 @@ import {
 } from "../../../styles/helpers"
 
 const ContentBlocks = ({ data }) => {
-  console.log("ContentBlocks: ", data)
   return (
     <StyledSection>
       <div className="wrapper">

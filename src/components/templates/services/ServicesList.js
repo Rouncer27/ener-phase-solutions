@@ -1,12 +1,51 @@
 import React from "react"
+import styled from "styled-components"
+import {
+  H2DarkGreen,
+  H4GunMetal,
+  standardWrapper,
+} from "../../../styles/helpers"
 
 const ServicesList = ({ data }) => {
   console.log("ServicesList: ", data)
   return (
-    <div>
-      <h1>ServicesList</h1>
-    </div>
+    <StyledSection>
+      <div className="wrapper">
+        <div className="services-title">
+          <h2>{data.servicesListTitle}</h2>
+        </div>
+        <ul className="services-list">
+          {data.servicesListItems.map((item, index) => (
+            <li key={index}>{item.item}</li>
+          ))}
+        </ul>
+      </div>
+    </StyledSection>
   )
 }
+
+const StyledSection = styled.section`
+  .wrapper {
+    ${standardWrapper};
+    max-width: 55rem !important;
+  }
+
+  .services-title {
+    width: 100%;
+
+    h2 {
+      ${H2DarkGreen};
+    }
+  }
+
+  .services-list {
+    width: 100%;
+
+    li {
+      ${H4GunMetal};
+      margin-bottom: 0.75rem;
+    }
+  }
+`
 
 export default ServicesList
