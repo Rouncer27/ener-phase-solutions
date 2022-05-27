@@ -14,7 +14,6 @@ import {
 import { Link } from "gatsby"
 
 const BlackContent = ({ data }) => {
-  console.log("BlackContent: ", data)
   const imageDisplay = getImage(
     data.blackContentBlockImage.localFile.childImageSharp.gatsbyImageData
   )
