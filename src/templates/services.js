@@ -8,7 +8,7 @@ import BlackContent from "../components/templates/services/BlackContent"
 import ContentBlocks from "../components/templates/services/ContentBlocks"
 import ServicesList from "../components/templates/services/ServicesList"
 import TestimonialSlider from "../components/templates/services/TestimonialSlider"
-import DisplayProjects from "../components/templates/services/DisplayProjects"
+import DisplayProjects from "../components/templates/common/DisplayProjects"
 
 const Services = props => {
   return (
@@ -22,10 +22,9 @@ const Services = props => {
       <ServicesList data={props.data.servicesList.template.servicesTemplate} />
       <TestimonialSlider
         data={props.data.testimonialSlider.template.servicesTemplate}
+        testimonials={props.data.testimonials.edges}
       />
-      <DisplayProjects
-        data={props.data.displayProjects.template.servicesTemplate}
-      />
+      <DisplayProjects data={props.data.projects.edges} />
     </Layout>
   )
 }
@@ -153,6 +152,39 @@ export const servicesTempQuery = graphql`
         ... on WpTemplate_Services {
           servicesTemplate {
             displayProjects
+          }
+        }
+      }
+    }
+
+    testimonials: allWpTestimonial {
+      edges {
+        node {
+          testimonials {
+            testimonialContent
+          }
+          title
+        }
+      }
+    }
+
+    projects: allWpProjectSingle {
+      edges {
+        node {
+          title
+          slug
+          project {
+            projectType
+            featuredImage {
+              altText
+              sourceUrl
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
           }
         }
       }
