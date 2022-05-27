@@ -9,7 +9,6 @@ import {
 } from "../../../styles/helpers"
 
 const Intro = ({ data }) => {
-  console.log("Intro: ", data)
   const imageDisplay = getImage(
     data.servicesIntroImage.localFile.childImageSharp.gatsbyImageData
   )
@@ -44,6 +43,16 @@ const Intro = ({ data }) => {
 }
 
 const StyledSection = styled.section`
+  padding-top: 5rem;
+
+  @media (min-width: 768px) {
+    padding-top: 5rem;
+  }
+
+  @media (min-width: 1025px) {
+    padding-top: 10rem;
+  }
+
   .wrapper {
     ${medWrapper};
   }
@@ -54,6 +63,7 @@ const StyledSection = styled.section`
 
     &__inner {
       padding: 4rem 2rem;
+
       @media (min-width: 768px) {
         padding: 5rem;
       }

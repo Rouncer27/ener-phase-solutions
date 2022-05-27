@@ -76,6 +76,11 @@ export const H2DarkGreen = css`
   color: ${colors.colorPrimary};
 `
 
+export const H2ightKhaki = css`
+  ${H2Base};
+  color: ${colors.colorSecondary};
+`
+
 // Headline Styles #3 //
 export const H3Base = css`
   ${fontSizer(2.2, 2.8, 76.8, 150, 2)}
