@@ -43,7 +43,6 @@ const getData = graphql`
 const ProjectsDisplay = () => {
   const proData = useStaticQuery(getData)
   const projects = proData.projects.edges
-  console.log("projects: ", projects)
   return (
     <StyledSection>
       <div className="wrapper">
@@ -79,12 +78,12 @@ const ProjectCard = styled.div`
   position: relative;
   width: 100%;
   margin: 2rem auto;
-  height: 40rem;
+  height: 45rem;
 
   @media (min-width: 768px) {
     width: calc(50% - 2rem);
     margin: 2rem 1rem;
-    height: 40rem;
+    height: 50rem;
   }
 
   @media (min-width: 1025px) {
