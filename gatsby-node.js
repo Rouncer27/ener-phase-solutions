@@ -27,6 +27,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+
+        projects: allWpProjectSingle {
+          edges {
+            node {
+              id
+              slug
+              uri
+            }
+          }
+        }
       }
     `)
 
@@ -106,6 +116,23 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: node.slug,
           next: index === 0 ? null : posts[index - 1].node.slug,
           prev: index === posts.length - 1 ? null : posts[index + 1].node.slug,
+        },
+      })
+    })
+
+    const projects = data.projects.edges
+    projects.forEach(({ node }, index) => {
+      createPage({
+        path: `/projects/${node.slug}/`,
+        component: path.resolve("./src/templates/project.js"),
+        context: {
+          id: node.id,
+          slug: node.slug,
+          next: index === 0 ? null : projects[index - 1].node.slug,
+          prev:
+            index === projects.length - 1
+              ? null
+              : projects[index + 1].node.slug,
         },
       })
     })
