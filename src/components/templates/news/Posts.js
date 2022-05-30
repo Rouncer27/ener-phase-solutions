@@ -5,7 +5,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
   B1Black,
   Btn1One,
-  colors,
   H3GunMetal,
   medWrapper,
 } from "../../../styles/helpers"
@@ -40,13 +39,16 @@ const getData = graphql`
 const Posts = () => {
   const postsData = useStaticQuery(getData)
   const posts = postsData.posts.edges
-  console.log("posts: ", posts)
   return (
     <StyledSection>
       <div className="wrapper">
         {posts.length > 0 &&
           posts.map(post => {
-            console.log("post: ", post)
+            const options = { year: "numeric", month: "long", day: "numeric" }
+            const postDate = new Date(post.node.date).toLocaleDateString(
+              undefined,
+              options
+            )
             const imageDisplay = getImage(
               post.node.post.featuredImage.localFile.childImageSharp
                 .gatsbyImageData
@@ -78,7 +80,7 @@ const Posts = () => {
                   </div>
                   <div className="post-content__bottom">
                     <div className="post-content__date">
-                      <p>{post.node.date}</p>
+                      <p>{postDate}</p>
                     </div>
                     <div className="post-content__button">
                       <button type="button">Read More</button>
