@@ -58,7 +58,6 @@ const OurClients = ({ data }) => {
                   key={i}
                 >
                   {list.clients.map((client, index) => {
-                    console.log("client: ", client)
                     return (
                       <li key={index}>
                         {client.url ? (

@@ -11,7 +11,7 @@ import {
   medWrapper,
 } from "../../../styles/helpers"
 
-const Team = ({ data }) => {
+const Team = ({ data, setModalActive, setActiveContent }) => {
   const imageBGDisplay = getImage(
     data.teamBackgroundImage.localFile.childImageSharp.gatsbyImageData
   )
@@ -59,7 +59,21 @@ const Team = ({ data }) => {
                     <span>{leader.lastName}</span>
                   </h3>
                   <p>{leader.title}</p>
-                  <button type="button">Meet {leader.firstName}</button>
+                  <button
+                    onClick={() => {
+                      setModalActive(true)
+                      setActiveContent({
+                        name: `${leader.firstName} ${leader.lastName}`,
+                        title: leader.title,
+                        bio: leader.bio,
+                        imageSrc: imageDisplay,
+                        imageAlt: imageAlt,
+                      })
+                    }}
+                    type="button"
+                  >
+                    Meet {leader.firstName}
+                  </button>
                 </div>
               </LeadershipTeam>
             )
@@ -90,7 +104,21 @@ const Team = ({ data }) => {
                     <span>{operational.lastName}</span>
                   </h3>
                   <p>{operational.title}</p>
-                  <button type="button">Read More</button>
+                  <button
+                    onClick={() => {
+                      setModalActive(true)
+                      setActiveContent({
+                        name: `${operational.firstName} ${operational.lastName}`,
+                        title: operational.title,
+                        bio: operational.bio,
+                        imageSrc: imageDisplay,
+                        imageAlt: imageAlt,
+                      })
+                    }}
+                    type="button"
+                  >
+                    Read More
+                  </button>
                 </div>
               </OperationalMembers>
             )

@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
@@ -10,18 +12,86 @@ import PageHero from "../components/templates/about/PageHero"
 import Team from "../components/templates/about/Team"
 import SideContent from "../components/templates/about/SideContent"
 import OurClients from "../components/templates/about/OurClients"
+import { colors } from "../styles/helpers"
+
+const PageMain = styled.div`
+  position: relative;
+`
+
+const PageBlur = styled.div`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: ${props => (props.active ? "50000000" : "-1")};
+  ${props => (props.active ? "filter: blur(5px) grayscale(50%);" : null)};
+`
+
+const PageClear = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: ${props => (props.active ? "500000" : "-1")};
+`
+
+const MemberModal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 45rem;
+  min-height: 45rem;
+  transform: translate(-50%, -50%);
+  background-color: ${colors.white};
+  z-index: 100000000000;
+`
 
 const About = props => {
+  const [modalActive, setModalActive] = useState(false)
+  const [activeContent, setActiveContent] = useState({
+    name: "",
+    title: "",
+    bio: "",
+    imageSrc: "",
+    imageAlt: "",
+  })
+
   return (
-    <Layout>
-      <Seo title="About Page" />
-      <Intro data={props.data.intro.template.aboutTemplate} />
-      <Values data={props.data.values.template.aboutTemplate} />
-      <PageHero data={props.data.pageHero.template.aboutTemplate} />
-      <Team data={props.data.team.template.aboutTemplate} />
-      <SideContent data={props.data.sideContent.template.aboutTemplate} />
-      <OurClients data={props.data.ourClients.template.aboutTemplate} />
-    </Layout>
+    <PageMain>
+      <PageBlur active={modalActive}>
+        <Layout>
+          <Seo title="About Page" />
+          <Intro data={props.data.intro.template.aboutTemplate} />
+          <Values data={props.data.values.template.aboutTemplate} />
+          <PageHero data={props.data.pageHero.template.aboutTemplate} />
+          <Team
+            data={props.data.team.template.aboutTemplate}
+            modalActive={modalActive}
+            setModalActive={setModalActive}
+            setActiveContent={setActiveContent}
+          />
+          <SideContent data={props.data.sideContent.template.aboutTemplate} />
+          <OurClients data={props.data.ourClients.template.aboutTemplate} />
+        </Layout>
+      </PageBlur>
+
+      {modalActive && (
+        <MemberModal>
+          <GatsbyImage
+            image={activeContent.imageSrc}
+            alt={activeContent.imageAlt}
+            layout="fullWidth"
+            formats={["auto", "webp", "avif"]}
+          />
+          <h1>{activeContent.name}</h1>
+          <p>{activeContent.title}</p>
+          <div dangerouslySetInnerHTML={{ __html: activeContent.bio }} />
+          <button onClick={() => setModalActive(false)}>Close</button>
+        </MemberModal>
+      )}
+      <PageClear onClick={() => setModalActive(false)} active={modalActive} />
+    </PageMain>
   )
 }
 
