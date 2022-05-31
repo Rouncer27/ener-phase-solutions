@@ -3,7 +3,6 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import {
   B1White,
-  Btn1One,
   Btn1Two,
   colors,
   H3White,

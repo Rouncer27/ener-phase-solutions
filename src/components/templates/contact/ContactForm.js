@@ -40,13 +40,6 @@ const ContactForm = ({ data }) => {
     })
   }
 
-  const handleOnDropdownChange = event => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    })
-  }
-
   const handleOnImageChange = event => {
     if (formData.images) {
       if (event.target.files && event.target.files[0]) {
@@ -302,7 +295,7 @@ const ContactForm = ({ data }) => {
                   <div className="img-preview">
                     {formData.images.map((img, i) => (
                       <div className="img-item">
-                        <img key={i} src={URL.createObjectURL(img)} />
+                        <img key={i} src={URL.createObjectURL(img)} alt="" />
                       </div>
                     ))}
                     <p className="images-uploaded">

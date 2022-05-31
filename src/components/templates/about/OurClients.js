@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 import {
@@ -12,8 +12,6 @@ import {
 
 const OurClients = ({ data }) => {
   const [activeList, setActiveList] = useState(1)
-
-  console.log("OurClients: ", data)
 
   const handleSetListActive = item => {
     setActiveList(item)
@@ -39,6 +37,7 @@ const OurClients = ({ data }) => {
                   }`}
                   data-item={index + 1}
                   key={index}
+                  role="button"
                   onClick={() => handleSetListActive(index + 1)}
                 >
                   <h3>

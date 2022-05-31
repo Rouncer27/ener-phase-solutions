@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, B1Blue, B1GunMetal } from "../../../styles/helpers"
+import { colors, B1GunMetal } from "../../../styles/helpers"
 import { HashLoader } from "react-spinners"
 
 const FormSubmitModal = styled.div`

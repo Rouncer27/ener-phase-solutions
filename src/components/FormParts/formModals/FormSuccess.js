@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, B1Blue, B1GunMetal } from "../../../styles/helpers"
+import { colors, B1GunMetal } from "../../../styles/helpers"
 import Lottie from "react-lottie"
 import * as formSuccess from "../../../styles/elements/lottieAnimations/formSuccess.json"
 

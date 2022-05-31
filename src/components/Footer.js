@@ -42,7 +42,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Follow us on Twitter - Link will open in new window"
-                    href={`#`}
+                    href={`https://twitter.com`}
                   >
                     <i>
                       <Twitter />
@@ -55,7 +55,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Follow us on Linkedin - Link will open in new window"
-                    href={`#`}
+                    href={`https://linkedin.com`}
                   >
                     <i>
                       <Linkedin />
