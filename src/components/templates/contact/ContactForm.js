@@ -2,13 +2,9 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import {
   B1GunMetal,
-  B2White,
-  Btn1Blue,
   Btn1One,
   colors,
-  H2White,
   medWrapper,
-  standardWrapper,
 } from "../../../styles/helpers"
 
 import submitToServer from "../../FormParts/functions/submitToServer"
@@ -21,7 +17,10 @@ const ContactForm = ({ data }) => {
     yourName: "",
     yourEmail: "",
     phone: "",
-    message: "",
+    projectType: "Test Project",
+    location: "",
+    howHelp: "",
+    details: "",
   })
 
   const [formStatus, setFormStatus] = useState({
@@ -50,23 +49,36 @@ const ContactForm = ({ data }) => {
       bodyFormData.append(field[0], field[1])
     })
 
-    const response = await submitToServer(data.bookingFormId, bodyFormData)
+    try {
+      const response = await submitToServer(data.contactFormId, bodyFormData)
 
-    if (!response.errors) {
-      setFormStatus({
-        ...formStatus,
-        submitting: false,
-        errorWarnDisplay: false,
-        success: true,
-        errors: [],
-      })
-    } else {
+      console.log("response: ", response)
+
+      if (!response.errors) {
+        setFormStatus({
+          ...formStatus,
+          submitting: false,
+          errorWarnDisplay: false,
+          success: true,
+          errors: [],
+        })
+      } else {
+        setFormStatus({
+          ...formStatus,
+          submitting: false,
+          errorWarnDisplay: true,
+          success: false,
+          errors: response.errorMessages,
+        })
+      }
+    } catch (err) {
+      console.log("ERROR: ", err)
       setFormStatus({
         ...formStatus,
         submitting: false,
         errorWarnDisplay: true,
         success: false,
-        errors: response.errorMessages,
+        errors: [],
       })
     }
   }
@@ -93,7 +105,10 @@ const ContactForm = ({ data }) => {
       yourName: "",
       yourEmail: "",
       phone: "",
-      message: "",
+      projectType: "",
+      location: "",
+      howHelp: "",
+      details: "",
     })
   }
 

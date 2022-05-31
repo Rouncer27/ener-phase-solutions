@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { B1White, colors } from "../../../styles/helpers"
+import { B1GunMetal, B1White, colors } from "../../../styles/helpers"
 import Lottie from "react-lottie"
 import * as formError from "../../../styles/elements/lottieAnimations/formError.json"
 
@@ -40,7 +40,7 @@ const ErrorModal = styled.div`
     width: 100%;
     margin: 0 auto;
     padding: 4rem;
-    background-color: ${colors.colorSecondary};
+    background-color: ${colors.colorPrimary};
     opacity: 0.95;
     border-radius: 0.75rem;
     box-shadow: 8px 9px 19px 0 rgba(0, 0, 0, 0.49);
@@ -70,9 +70,9 @@ const ErrorModal = styled.div`
         height: 3.5rem;
         transition: all 0.3s ease;
         border-radius: 50%;
-        border: 0.25rem solid ${colors.colorPrimary};
-        background-color: ${colors.colorPrimary};
-        color: ${colors.colorSecondary};
+        border: 0.25rem solid ${colors.colorSecondary};
+        background-color: ${colors.colorSecondary};
+        color: ${colors.black};
         font-weight: 700;
         cursor: pointer;
 

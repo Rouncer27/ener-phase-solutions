@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, B1Blue } from "../../../styles/helpers"
+import { colors, B1Blue, B1GunMetal } from "../../../styles/helpers"
 import { HashLoader } from "react-spinners"
 
 const FormSubmitModal = styled.div`
@@ -68,9 +68,8 @@ const FormSubmitModal = styled.div`
       }
 
       h2 {
-        ${B1Blue};
+        ${B1GunMetal};
         width: 100%;
-        color: ${colors.white};
         text-align: center;
       }
     }
@@ -83,7 +82,7 @@ const FormSubmit = ({ isActive }) => {
       <div className="modalInner">
         <div className="modalInner__content">
           <div className="modalInner__content--loader">
-            <HashLoader size={75} color={"#D9C99E"} />
+            <HashLoader size={75} color={"#1f793e"} />
           </div>
           <h2>
             Thank you for submitting your form, <br />

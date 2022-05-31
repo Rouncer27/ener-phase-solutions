@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, B1Blue } from "../../../styles/helpers"
+import { colors, B1Blue, B1GunMetal } from "../../../styles/helpers"
 import Lottie from "react-lottie"
 import * as formSuccess from "../../../styles/elements/lottieAnimations/formSuccess.json"
 
@@ -97,7 +97,7 @@ const SuccessModal = styled.div`
       }
 
       h2 {
-        ${B1Blue};
+        ${B1GunMetal};
         width: 100%;
         text-align: center;
       }
@@ -120,7 +120,7 @@ const FormSuccess = ({ isActive, handleClose }) => {
           </div>
           <h2>
             Your from has been successfully sent. <br />
-            We will be in touch shortly, thank you
+            We will be in touch shortly, thank you.
           </h2>
         </div>
         <div className="closeButton">
