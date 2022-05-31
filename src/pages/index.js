@@ -170,7 +170,7 @@ export const homeQuery = graphql`
       }
     }
 
-    projects: allWpProjectSingle {
+    projects: allWpProjectSingle(limit: 3) {
       edges {
         node {
           title
@@ -192,7 +192,7 @@ export const homeQuery = graphql`
       }
     }
 
-    posts: allWpPost {
+    posts: allWpPost(limit: 2) {
       edges {
         node {
           slug

@@ -15,6 +15,7 @@ const DisplayPosts = ({ data, bgImg }) => {
     bgImg.localFile.childImageSharp.gatsbyImageData
   )
   const bgImageAlt = bgImg.altText
+
   return (
     <StyledSection>
       <div className="wrapper">
