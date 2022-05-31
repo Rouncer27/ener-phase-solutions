@@ -17,7 +17,7 @@ const ContactForm = ({ data }) => {
     yourName: "",
     yourEmail: "",
     phone: "",
-    projectType: "Test Project",
+    projectType: "",
     location: "",
     howHelp: "",
     details: "",
@@ -31,6 +31,13 @@ const ContactForm = ({ data }) => {
   })
 
   const handleOnChange = event => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleOnDropdownChange = event => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -187,6 +194,46 @@ const ContactForm = ({ data }) => {
                   />
                 </label>
               </InputField>
+              <DropdownInputStyled>
+                <label htmlFor="projectType">
+                  What type of service are you looking for?
+                </label>
+                <select
+                  value={formData.projectType}
+                  name="projectType"
+                  id="projectType"
+                  onChange={handleOnChange}
+                >
+                  <option value="">
+                    -- Please choose a project / service --
+                  </option>
+                  <option value="Power System Design">
+                    Power System Design
+                  </option>
+                  <option value="Power Systems Engineering">
+                    Power Systems Engineering
+                  </option>
+                  <option value="Design-Buld Engineering">
+                    Design-Buld Engineering
+                  </option>
+                  <option value="Power System Evaluation">
+                    Power System Evaluation
+                  </option>
+                  <option value="Maintenance Planning">
+                    Maintenance Planning
+                  </option>
+                  <option value="Retrofits/Upgrades">Retrofits/Upgrades</option>
+
+                  <option value="Technical Training">Technical Training</option>
+
+                  <option value="Multi-year Maintenance Contracts">
+                    Multi-year Maintenance Contracts
+                  </option>
+                  <option value="Medium Voltage Terminations">
+                    Medium Voltage Terminations
+                  </option>
+                </select>
+              </DropdownInputStyled>
               <InputField>
                 <label htmlFor="location">
                   Project Location<span className="required">&#42;</span>
@@ -404,6 +451,49 @@ const InputField = styled.div`
       border: 0.25rem ${colors.colorAccent} solid;
       border-radius: 5px;
     }
+  }
+`
+
+const DropdownInputStyled = styled.div`
+  width: calc(100% - 4rem);
+  margin: 1rem 2rem;
+  padding: 1rem 0;
+
+  @media (min-width: 768px) {
+    width: calc(100% - 4rem);
+    margin: 1rem 2rem;
+  }
+
+  label {
+    ${B1GunMetal};
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    line-height: 1.5;
+
+    .error-message {
+      display: none;
+    }
+
+    .error-active {
+      display: inline-block;
+      color: red;
+      padding-left: 2rem;
+    }
+  }
+
+  select {
+    display: block;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0.9rem 1rem;
+    color: #000;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 0.25rem ${colors.colorAccent} solid;
+    border-radius: 5px;
   }
 `
 
