@@ -5,6 +5,8 @@ import {
   Btn1One,
   colors,
   medWrapper,
+  fontSizer,
+  Btn1Two,
 } from "../../../styles/helpers"
 
 import submitToServer from "../../FormParts/functions/submitToServer"
@@ -21,6 +23,7 @@ const ContactForm = ({ data }) => {
     location: "",
     howHelp: "",
     details: "",
+    images: null,
   })
 
   const [formStatus, setFormStatus] = useState({
@@ -44,6 +47,33 @@ const ContactForm = ({ data }) => {
     })
   }
 
+  const handleOnImageChange = event => {
+    if (formData.images) {
+      if (event.target.files && event.target.files[0]) {
+        const newFiles = [...formData.images, ...event.target.files]
+        setFormData({
+          ...formData,
+          images: newFiles,
+        })
+      }
+    } else {
+      if (event.target.files && event.target.files[0]) {
+        setFormData({
+          ...formData,
+          images: [...event.target.files],
+        })
+      }
+    }
+  }
+
+  const handleClearImages = () => {
+    setFormData({
+      ...formData,
+      images: [],
+    })
+    document.querySelector(".upload-image-field input").value = ""
+  }
+
   const handleOnSubmit = async event => {
     event.preventDefault()
     setFormStatus({
@@ -56,10 +86,16 @@ const ContactForm = ({ data }) => {
       bodyFormData.append(field[0], field[1])
     })
 
+    let fl = formData.images.length
+    let i = 0
+
+    while (i < fl) {
+      bodyFormData.append(`image-${i}`, formData.images[i])
+      i++
+    }
+
     try {
       const response = await submitToServer(data.contactFormId, bodyFormData)
-
-      console.log("response: ", response)
 
       if (!response.errors) {
         setFormStatus({
@@ -116,7 +152,10 @@ const ContactForm = ({ data }) => {
       location: "",
       howHelp: "",
       details: "",
+      images: null,
     })
+
+    document.querySelector(".upload-image-field input").value = ""
   }
 
   return (
@@ -257,6 +296,38 @@ const ContactForm = ({ data }) => {
                   />
                 </label>
               </InputField>
+
+              <InputField className="upload-image-field">
+                {formData.images && (
+                  <div className="img-preview">
+                    {formData.images.map((img, i) => (
+                      <div className="img-item">
+                        <img key={i} src={URL.createObjectURL(img)} />
+                      </div>
+                    ))}
+                    <p className="images-uploaded">
+                      {formData.images.length} Images Selected.
+                    </p>
+                  </div>
+                )}
+                <label htmlFor="images">
+                  Upload Images for Reference
+                  <input
+                    name="images"
+                    type="file"
+                    id="images"
+                    multiple
+                    onChange={handleOnImageChange}
+                  />
+                </label>
+              </InputField>
+              <button
+                className="clear-images"
+                onClick={handleClearImages}
+                type="button"
+              >
+                Clear All Images
+              </button>
             </div>
             <div className="form-right">
               <InputField size="full">
@@ -352,14 +423,6 @@ const SectionStyled = styled.section`
     }
   }
 
-  .background-logo {
-    position: absolute;
-    top: 5rem;
-    right: -2.5rem;
-    width: 30rem;
-    z-index: 1;
-  }
-
   .contact-form {
     position: relative;
     width: 100%;
@@ -385,6 +448,11 @@ const SectionStyled = styled.section`
         @media (min-width: 768px) {
           width: calc(50%);
         }
+      }
+
+      .clear-images {
+        ${Btn1Two};
+        margin: 0 2rem;
       }
 
       .required-info {
@@ -418,6 +486,22 @@ const InputField = styled.div`
   @media (min-width: 768px) {
     width: calc(100% - 4rem);
     margin: 1rem 2rem;
+  }
+
+  .img-preview {
+    flex-wrap: wrap;
+    display: flex;
+
+    .img-item {
+      width: 5rem;
+    }
+  }
+
+  .images-uploaded {
+    ${B1GunMetal};
+    ${fontSizer(1.2, 1.4, 76.8, 150, 1.4)};
+    width: 100%;
+    margin: 0;
   }
 
   label {
