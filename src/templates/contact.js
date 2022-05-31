@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Intro from "../components/templates/contact/Intro"
 import Location from "../components/templates/contact/Location"
+import ContactForm from "../components/templates/contact/ContactForm"
 import PageHero from "../components/templates/contact/PageHero"
 
 const Contact = props => {
@@ -14,6 +15,9 @@ const Contact = props => {
       <Seo title="Contact Page" />
       <Intro data={props.data.intro.template.contactTemplate} />
       <Location data={props.data.location.template.contactTemplate} />
+      {props.data.form.template.contactTemplate.contactFormDisplay && (
+        <ContactForm data={props.data.form.template.contactTemplate} />
+      )}
       <PageHero
         data={props.data.hero.template.contactTemplate.contactHeroImage}
       />
@@ -65,6 +69,17 @@ export const contactTempQuery = graphql`
             locationPhone1
             locationPhone2
             locationEmail
+          }
+        }
+      }
+    }
+
+    form: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_Contact {
+          contactTemplate {
+            contactFormDisplay
+            contactFormId
           }
         }
       }
