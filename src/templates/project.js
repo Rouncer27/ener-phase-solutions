@@ -37,7 +37,7 @@ const project = props => {
 
 export const query = graphql`
   query singleProjectQuery($slug: String!) {
-    seoInfo: wpPage(slug: { eq: $slug }) {
+    seoInfo: wpProjectSingle(slug: { eq: $slug }) {
       seoFields {
         swbThemeDescription
         swbThemeMetaTitle
