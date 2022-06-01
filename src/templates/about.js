@@ -12,7 +12,7 @@ import PageHero from "../components/templates/about/PageHero"
 import Team from "../components/templates/about/Team"
 import SideContent from "../components/templates/about/SideContent"
 import OurClients from "../components/templates/about/OurClients"
-import { colors } from "../styles/helpers"
+import { colors, H4GunMetal, B1GunMetal } from "../styles/helpers"
 
 const PageMain = styled.div`
   position: relative;
@@ -40,11 +40,76 @@ const MemberModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  min-width: 45rem;
-  min-height: 45rem;
+  width: 45rem;
   transform: translate(-50%, -50%);
-  background-color: ${colors.white};
+  background-color: ${colors.colorSecondary};
   z-index: 100000000000;
+
+  @media (min-width: 768px) {
+    width: 55rem;
+  }
+
+  @media (min-width: 1025px) {
+    width: 40vw;
+  }
+
+  .modal-image {
+    width: 100%;
+    margin: auto;
+  }
+
+  .modal-content {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      padding: 2rem 4rem;
+    }
+
+    @media (min-width: 1025px) {
+      padding: 2rem 5.5rem;
+    }
+
+    h3 {
+      ${H4GunMetal};
+      text-transform: uppercase;
+    }
+
+    h4 {
+      ${B1GunMetal};
+    }
+
+    p {
+      ${B1GunMetal};
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    button {
+      ${B1GunMetal};
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      margin: 0;
+      border: solid 0.1rem ${colors.colorTertiary};
+      border-radius: 50%;
+      background-color: transparent;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${colors.white};
+        border-color: ${colors.colorPrimary};
+        color: ${colors.colorPrimary};
+      }
+    }
+  }
 `
 
 const About = props => {
@@ -78,16 +143,22 @@ const About = props => {
 
       {modalActive && (
         <MemberModal>
-          <GatsbyImage
-            image={activeContent.imageSrc}
-            alt={activeContent.imageAlt}
-            layout="fullWidth"
-            formats={["auto", "webp", "avif"]}
-          />
-          <h1>{activeContent.name}</h1>
-          <p>{activeContent.title}</p>
-          <div dangerouslySetInnerHTML={{ __html: activeContent.bio }} />
-          <button onClick={() => setModalActive(false)}>Close</button>
+          <div className="modal-image">
+            <GatsbyImage
+              image={activeContent.imageSrc}
+              alt={activeContent.imageAlt}
+              layout="fullWidth"
+              formats={["auto", "webp", "avif"]}
+            />
+          </div>
+          <div className="modal-content">
+            <h3>{activeContent.name}</h3>
+            <h4>{activeContent.title}</h4>
+            <div dangerouslySetInnerHTML={{ __html: activeContent.bio }} />
+          </div>
+          <div className="close-button">
+            <button onClick={() => setModalActive(false)}>&#10005;</button>
+          </div>
         </MemberModal>
       )}
       <PageClear onClick={() => setModalActive(false)} active={modalActive} />
