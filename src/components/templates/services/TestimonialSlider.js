@@ -17,6 +17,7 @@ const TestimonialSlider = ({ data, testimonials }) => {
 const SectionStyled = styled.section`
   position: relative;
   width: 100%;
+  height: 40vw;
   z-index: 100;
 
   @media (min-width: 768px) {
