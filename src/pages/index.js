@@ -12,6 +12,7 @@ import DisplayProjects from "../components/templates/common/DisplayProjects"
 import DisplayPosts from "../components/templates/common/DisplayPosts"
 
 const IndexPage = props => {
+  const { seoInfo } = props.data
   const hero = props?.data?.hero?.template?.homeTemplate
     ? props?.data?.hero?.template?.homeTemplate
     : null
@@ -25,7 +26,12 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <Hero data={hero} />
       <Trust data={trust} />
       <ThreeBoxes data={threeBoxes} />

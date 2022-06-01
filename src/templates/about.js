@@ -113,6 +113,7 @@ const MemberModal = styled.div`
 `
 
 const About = props => {
+  const { seoInfo } = props.data
   const [modalActive, setModalActive] = useState(false)
   const [activeContent, setActiveContent] = useState({
     name: "",
@@ -126,7 +127,12 @@ const About = props => {
     <PageMain>
       <PageBlur active={modalActive}>
         <Layout>
-          <Seo title="About Page" />
+          <Seo
+            title={seoInfo.seoFields.swbThemeMetaTitle}
+            description={seoInfo.seoFields.swbThemeDescription}
+            //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+            location={props.location.pathname}
+          />
           <Intro data={props.data.intro.template.aboutTemplate} />
           <Values data={props.data.values.template.aboutTemplate} />
           <PageHero data={props.data.pageHero.template.aboutTemplate} />

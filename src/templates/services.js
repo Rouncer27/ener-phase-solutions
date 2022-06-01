@@ -11,9 +11,15 @@ import TestimonialSlider from "../components/templates/services/TestimonialSlide
 import DisplayProjects from "../components/templates/common/DisplayProjects"
 
 const Services = props => {
+  const { seoInfo } = props.data
   return (
     <Layout>
-      <Seo title="Services Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <Intro data={props.data.intro.template.servicesTemplate} />
       <BlackContent data={props.data.blackContent.template.servicesTemplate} />
       <ContentBlocks

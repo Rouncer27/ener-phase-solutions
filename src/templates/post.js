@@ -9,9 +9,15 @@ import PostWysiwyg from "../components/templates/singlePost/PostWysiwyg"
 import PostGallery from "../components/templates/singlePost/PostGallery"
 
 const Post = props => {
+  const { seoInfo } = props.data
   return (
     <Layout>
-      <Seo title="Post Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <PostHeroImage data={props.data.post.post.featuredImage} />
       <PostTitle
         title={props.data.post.title}

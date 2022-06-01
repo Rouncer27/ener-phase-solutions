@@ -9,10 +9,15 @@ import ContactForm from "../components/templates/contact/ContactForm"
 import PageHero from "../components/templates/contact/PageHero"
 
 const Contact = props => {
-  console.log("props: ", props)
+  const { seoInfo } = props.data
   return (
     <Layout>
-      <Seo title="Contact Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <Intro data={props.data.intro.template.contactTemplate} />
       <Location data={props.data.location.template.contactTemplate} />
       {props.data.form.template.contactTemplate.contactFormDisplay && (

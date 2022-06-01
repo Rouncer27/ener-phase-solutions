@@ -7,9 +7,15 @@ import Intro from "../components/templates/projects/Intro"
 import ProjectsDisplay from "../components/templates/projects/ProjectsDisplay"
 
 const Projects = props => {
+  const { seoInfo } = props.data
   return (
     <Layout>
-      <Seo title="Projects Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <Intro data={props.data.intro.template.projectsTemplate} />
       {props.data.intro.template.projectsTemplate.displayProjects && (
         <ProjectsDisplay />

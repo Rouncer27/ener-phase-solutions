@@ -10,10 +10,15 @@ import ProjectWysiwyg from "../components/templates/project/ProjectWysiwyg"
 import ProjectGallery from "../components/templates/project/ProjectGallery"
 
 const project = props => {
-  console.log("project: ", props)
+  const { seoInfo } = props.data
   return (
     <Layout>
-      <Seo title="project" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <ProjectHeroImage data={props.data.project.project.featuredImage} />
       <ProjectTitle
         title={props.data.project.title}
