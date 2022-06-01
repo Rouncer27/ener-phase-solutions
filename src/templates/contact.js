@@ -27,17 +27,17 @@ const Contact = props => {
 
 export const contactTempQuery = graphql`
   query contactTempPage($id: String!) {
-    # seoInfo: wpPage(id: { eq: $id }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
 
     intro: wpPage(id: { eq: $id }) {
       template {

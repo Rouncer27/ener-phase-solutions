@@ -32,17 +32,17 @@ const project = props => {
 
 export const query = graphql`
   query singleProjectQuery($slug: String!) {
-    # seoInfo: wpPage(slug: { eq: $slug }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPage(slug: { eq: $slug }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
 
     project: wpProjectSingle(slug: { eq: $slug }) {
       project {

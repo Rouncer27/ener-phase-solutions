@@ -20,17 +20,17 @@ const News = props => {
 
 export const newsTempQuery = graphql`
   query newsTempPage($id: String!) {
-    # seoInfo: wpPage(id: { eq: $id }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
 
     intro: wpPage(id: { eq: $id }) {
       template {

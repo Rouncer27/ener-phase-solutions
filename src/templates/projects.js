@@ -20,17 +20,17 @@ const Projects = props => {
 
 export const projectsTempQuery = graphql`
   query projectsTempPage($id: String!) {
-    # seoInfo: wpPage(id: { eq: $id }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
 
     intro: wpPage(id: { eq: $id }) {
       template {

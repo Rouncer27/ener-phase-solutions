@@ -43,17 +43,17 @@ const IndexPage = props => {
 
 export const homeQuery = graphql`
   {
-    # seoInfo: wpPage(slug: { eq: "home" }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPage(slug: { eq: "home" }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
     hero: wpPage(slug: { eq: "home" }) {
       template {
         ... on WpTemplate_Home {

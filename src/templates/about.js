@@ -168,17 +168,17 @@ const About = props => {
 
 export const aboutTempQuery = graphql`
   query aboutTempPage($id: String!) {
-    # seoInfo: wpPage(id: { eq: $id }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
     intro: wpPage(id: { eq: $id }) {
       template {
         ... on WpTemplate_About {

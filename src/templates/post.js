@@ -30,17 +30,17 @@ const Post = props => {
 
 export const query = graphql`
   query singlePostQuery($slug: String!) {
-    # seoInfo: wpPage(slug: { eq: $slug }) {
-    #   seoFields {
-    #     swbThemeDescription
-    #     swbThemeMetaTitle
-    #     swbThemeImage {
-    #       localFile {
-    #         relativePath
-    #       }
-    #     }
-    #   }
-    # }
+    seoInfo: wpPost(slug: { eq: $slug }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
 
     post: wpPost(slug: { eq: $slug }) {
       post {
