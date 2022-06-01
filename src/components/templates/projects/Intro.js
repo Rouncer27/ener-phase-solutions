@@ -34,10 +34,12 @@ const StyledSection = styled.section`
 
     h1 {
       ${H1SeaWeedGreen};
+      margin-bottom: 0;
     }
 
     h3 {
       ${H3GunMetal};
+      margin-top: 0;
     }
   }
 

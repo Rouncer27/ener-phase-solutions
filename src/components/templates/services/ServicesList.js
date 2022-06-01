@@ -6,13 +6,17 @@ import {
   standardWrapper,
 } from "../../../styles/helpers"
 
+import quotes from "../../../images/graphic-one.png"
+
 const ServicesList = ({ data }) => {
-  console.log("ServicesList: ", data)
   return (
     <StyledSection>
       <div className="wrapper">
         <div className="services-title">
           <h2>{data.servicesListTitle}</h2>
+          <div className="graphic">
+            <img src={quotes} alt="" />
+          </div>
         </div>
         <ul className="services-list">
           {data.servicesListItems.map((item, index) => (
@@ -35,12 +39,20 @@ const StyledSection = styled.section`
     padding: 0 0 8rem;
   }
 
+  .graphic {
+    position: absolute;
+    top: 3rem;
+    left: -7rem;
+    width: 4rem;
+  }
+
   .wrapper {
     ${standardWrapper};
     max-width: 55rem !important;
   }
 
   .services-title {
+    position: relative;
     width: 100%;
 
     h2 {
