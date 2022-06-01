@@ -25,6 +25,16 @@ const ServicesList = ({ data }) => {
 }
 
 const StyledSection = styled.section`
+  padding: 4rem 0;
+
+  @media (min-width: 768px) {
+    padding: 6rem 0;
+  }
+
+  @media (min-width: 1025px) {
+    padding: 0 0 8rem;
+  }
+
   .wrapper {
     ${standardWrapper};
     max-width: 55rem !important;
