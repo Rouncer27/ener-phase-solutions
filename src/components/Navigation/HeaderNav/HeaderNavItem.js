@@ -68,6 +68,7 @@ const HeaderNavItem = ({ item }) => {
 
 const HeaderNavItemStyled = styled.li`
   padding: 0;
+  margin: auto 0.5rem;
   position: relative;
   align-self: center;
   text-align: center;
@@ -87,7 +88,7 @@ const HeaderNavItemStyled = styled.li`
     }
 
     &[aria-current="page"] {
-      color: ${colors.white};
+      color: ${colors.colorTertiary};
       background-color: ${colors.colorSecondary};
 
       &:hover {

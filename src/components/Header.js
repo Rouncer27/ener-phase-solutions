@@ -59,7 +59,11 @@ const StyledHeader = styled.header`
     }
 
     @media (min-width: 1100px) {
-      width: 40%;
+      width: 30.5%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 35%;
     }
 
     a {
@@ -109,7 +113,11 @@ const StyledHeader = styled.header`
     }
 
     @media (min-width: 1100px) {
-      width: 60%;
+      width: 69.5%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 65%;
     }
   }
 `
