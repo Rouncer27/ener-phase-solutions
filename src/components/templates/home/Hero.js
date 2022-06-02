@@ -27,6 +27,7 @@ const Hero = ({ data }) => {
         },
       })
       .add("start")
+
       .fromTo(
         `.title-small__one`,
         {
@@ -38,8 +39,58 @@ const Hero = ({ data }) => {
           ease: "power2.out",
           y: 0,
           duration: 1.5,
+        },
+        "start+=0"
+      )
+
+      .fromTo(
+        `.title-small__two`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1,
+        },
+        "start+=0"
+      )
+
+      .fromTo(
+        `.project-title`,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          duration: 1.5,
+        },
+        "start+=0.3"
+      )
+      .to(`.project-title`, {
+        x: 300,
+        autoAlpha: 0,
+      })
+
+      .fromTo(
+        `.problem-title`,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          duration: 1.5,
         }
       )
+      .to(`.problem-title`, {
+        x: 300,
+        autoAlpha: 0,
+      })
+      .add("next")
 
       .fromTo(
         `.title-large__one`,
@@ -53,7 +104,7 @@ const Hero = ({ data }) => {
           x: 0,
           duration: 1,
         },
-        "start+=0.3"
+        "next+=0"
       )
       .fromTo(
         `.title-large__two`,
@@ -67,36 +118,23 @@ const Hero = ({ data }) => {
           x: 0,
           duration: 1,
         },
-        "start+=0.6"
+        "next+=0"
       )
-      .fromTo(
-        `.title-small__two`,
-        {
-          autoAlpha: 0,
-          y: 100,
-        },
-        {
-          autoAlpha: 1,
-          ease: "power2.out",
-          y: 0,
-          duration: 1,
-        },
-        "start+=0.9"
-      )
-      .fromTo(
-        `.hero-top-box`,
-        {
-          autoAlpha: 0,
-          y: 100,
-        },
-        {
-          autoAlpha: 1,
-          ease: "power2.out",
-          y: 0,
-          duration: 1,
-        },
-        "start+=1.2"
-      )
+
+    // .fromTo(
+    //   `.hero-top-box`,
+    //   {
+    //     autoAlpha: 0,
+    //     y: 100,
+    //   },
+    //   {
+    //     autoAlpha: 1,
+    //     ease: "power2.out",
+    //     y: 0,
+    //     duration: 1,
+    //   },
+    //   "start+=1.2"
+    // )
   }, [])
   return (
     <HeroContentSection id="hero-trigger">
@@ -115,6 +153,8 @@ const Hero = ({ data }) => {
             <span className="title title-small title-small__two">
               is our priority
             </span>
+            <span className="project-title">Project</span>
+            <span className="problem-title">Problem</span>
           </h1>
         </div>
         <div className="home-hero-overlay" />
@@ -147,25 +187,52 @@ const StyledSection = styled.div`
 
   .home-hero-title {
     position: absolute;
-    top: 0;
+    top: 15rem;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 10;
 
+    .problem-title,
+    .project-title {
+      ${HomeHeaderWhite};
+      position: absolute;
+      top: 20%;
+      left: 30%;
+      visibility: hidden;
+      opacity: 0;
+      text-transform: uppercase;
+    }
+
     h1 {
       width: 85rem;
       margin: 10rem auto;
+
       .title {
         display: block;
       }
       .title-small {
         ${H1LightKhaki};
+        visibility: hidden;
+        opacity: 0;
+
+        &__one {
+          position: absolute;
+          opacity: 0;
+          top: 12.5%;
+          left: 12.5%;
+        }
+
+        &__two {
+          padding-left: 30rem;
+        }
       }
 
       .title-large {
         ${HomeHeaderWhite};
         text-transform: uppercase;
+        visibility: hidden;
+        opacity: 0;
       }
     }
   }
