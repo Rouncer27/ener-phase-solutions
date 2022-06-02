@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -8,14 +8,74 @@ import {
   medWrapper,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const Intro = ({ data }) => {
   const imageDisplay = getImage(
     data.servicesIntroImage.localFile.childImageSharp.gatsbyImageData
   )
   const imageAlt = data.servicesIntroImage.altText
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#services-intro-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+
+      .fromTo(
+        `.intro-title__inner h2`,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          duration: 2,
+        }
+      )
+
+      .fromTo(
+        `.intro-bottom__image`,
+        {
+          autoAlpha: 0,
+          x: -300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          x: 0,
+          duration: 1.5,
+        },
+        "start+=0.3"
+      )
+
+      .fromTo(
+        `.intro-bottom__content`,
+        {
+          autoAlpha: 0,
+          x: 300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          x: 0,
+          duration: 1.5,
+        },
+        "start+=0.3"
+      )
+  }, [])
+
   return (
     <StyledSection>
-      <div className="intro-title">
+      <div id="services-intro-trigger" className="intro-title">
         <div className="intro-title__inner">
           <h2>{data.servicesIntroTitle}</h2>
         </div>

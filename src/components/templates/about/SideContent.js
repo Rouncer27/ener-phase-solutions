@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -12,17 +12,51 @@ import {
   B1Black,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const SideContent = ({ data }) => {
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#side-content-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+
+      .fromTo(
+        `.block-content-item`,
+        {
+          autoAlpha: 0,
+          y: 300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1.5,
+          stagger: {
+            each: 0.4,
+          },
+        }
+      )
+  }, [])
+
   return (
     <StyledSection>
-      <div className="wrapper">
+      <div id="side-content-trigger" className="wrapper">
         {data.sideBySideContentBlock.map((block, index) => {
           const imageDisplay = getImage(
             block.image.localFile.childImageSharp.gatsbyImageData
           )
           const imageAlt = block.image.altText
           return (
-            <StyledBlock key={index}>
+            <StyledBlock className="block-content-item" key={index}>
               <div>
                 <GatsbyImage
                   image={imageDisplay}

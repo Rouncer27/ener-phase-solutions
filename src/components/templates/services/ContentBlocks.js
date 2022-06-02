@@ -24,6 +24,7 @@ const ContentBlocks = ({ data }) => {
           const imageAlt = block.image.altText
           return (
             <Block
+              id={`content-block-trigger-${index}`}
               key={index}
               bgcolor={block.backgroundColor}
               layout={block.reverseLayout}
