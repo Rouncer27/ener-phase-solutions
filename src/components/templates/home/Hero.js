@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   colors,
@@ -10,20 +10,111 @@ import {
 } from "../../../styles/helpers"
 
 import HeroImage from "../common/HeroImage"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
 
 const Hero = ({ data }) => {
   const bgImg = data.heroImage
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#hero-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `.title-small__one`,
+        {
+          autoAlpha: 0,
+          y: -100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1.5,
+        }
+      )
+
+      .fromTo(
+        `.title-large__one`,
+        {
+          autoAlpha: 0,
+          x: -100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          x: 0,
+          duration: 1,
+        },
+        "start+=0.3"
+      )
+      .fromTo(
+        `.title-large__two`,
+        {
+          autoAlpha: 0,
+          x: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          x: 0,
+          duration: 1,
+        },
+        "start+=0.6"
+      )
+      .fromTo(
+        `.title-small__two`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1,
+        },
+        "start+=0.9"
+      )
+      .fromTo(
+        `.hero-top-box`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1,
+        },
+        "start+=1.2"
+      )
+  }, [])
   return (
-    <HeroContentSection>
+    <HeroContentSection id="hero-trigger">
       <StyledSection>
         {bgImg && <HeroImage bgImg={bgImg} />}
 
         <div className="home-hero-title">
           <h1>
-            <span className="title title-small">Your</span>
-            <span className="title title-large">Power System</span>
-            <span className="title title-large">Reliability</span>
-            <span className="title title-small">is our priority</span>
+            <span className="title title-small title-small__one">Your</span>
+            <span className="title title-large title-large__one">
+              Power System
+            </span>
+            <span className="title title-large title-large__two">
+              Reliability
+            </span>
+            <span className="title title-small title-small__two">
+              is our priority
+            </span>
           </h1>
         </div>
         <div className="home-hero-overlay" />

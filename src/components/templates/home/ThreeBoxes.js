@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import {
@@ -10,9 +10,41 @@ import {
 } from "../../../styles/helpers"
 import { Link } from "gatsby"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const ThreeBoxes = ({ data }) => {
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#three-box-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `.box-item`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 2,
+          stagger: {
+            each: 0.4,
+          },
+        }
+      )
+  }, [])
   return (
-    <SectionStyled>
+    <SectionStyled id="three-box-trigger">
       <div className="wrapper">
         {data.threeBoxBoxes.map((box, index) => {
           const imageDisplay = getImage(
@@ -20,7 +52,7 @@ const ThreeBoxes = ({ data }) => {
           )
           const imageAlt = box.image.altText
           return (
-            <BoxStyled key={index}>
+            <BoxStyled className="box-item" key={index}>
               <Link to={`/${box.slug}`}>
                 <div>
                   <GatsbyImage

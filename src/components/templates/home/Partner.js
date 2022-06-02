@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import {
@@ -9,7 +9,43 @@ import {
   standardWrapper,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const Partner = ({ data }) => {
+  useEffect(() => {
+    const items = document.querySelectorAll(".stat-counter")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#counter-trigger",
+          markers: false,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      })
+      .from(items, {
+        textContent: 0,
+        duration: 2.5,
+        ease: "power1.in",
+        snap: { textContent: 1 },
+        stagger: {
+          each: 0.25,
+          onUpdate: function () {
+            this.targets()[0].innerHTML = numberWithCommas(
+              Math.ceil(this.targets()[0].textContent)
+            )
+          },
+        },
+      })
+
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+  }, [])
+
   return (
     <StyledSection>
       <div className="wrapper">
@@ -26,7 +62,7 @@ const Partner = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: data.truePartnerSmallContent }}
           />
         </div>
-        <div className="partner-stats">
+        <div className="partner-stats" id="counter-trigger">
           {data.truePartnerStats.map((stat, index) => {
             const imageDisplay = getImage(
               stat.statIcon.localFile.childImageSharp.gatsbyImageData
@@ -43,7 +79,7 @@ const Partner = ({ data }) => {
                   />
                 </div>
                 <div className="stat-content">
-                  <p>{stat.statNumber.toLocaleString("en-US")}</p>
+                  <p className="stat-counter">{stat.statNumber}</p>
                   <p>{stat.statTitle}</p>
                 </div>
               </StyledStat>

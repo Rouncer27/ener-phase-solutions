@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   B1White,
@@ -9,14 +9,47 @@ import {
   H1SeaWeedGreen,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const DisplayProjects = ({ data }) => {
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#projects-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `.project-card`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 2,
+          stagger: {
+            each: 0.4,
+          },
+        }
+      )
+  }, [])
+
   return (
     <SectionStyled>
       <div className="wrapper">
         <div className="projects-title">
           <h2>Projects for Inspiration</h2>
         </div>
-        <div className="projects-wrapper">
+        <div id="projects-trigger" className="projects-wrapper">
           {data.map((project, index) => {
             const imageDisplay = getImage(
               project.node.project.featuredImage.localFile.childImageSharp
@@ -24,7 +57,7 @@ const DisplayProjects = ({ data }) => {
             )
             const imageAlt = project.node.project.featuredImage.altText
             return (
-              <Project key={index}>
+              <Project className="project-card" key={index}>
                 <Link to={`/projects/${project.node.slug}`}>
                   <div className="project-image">
                     <GatsbyImage

@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   B1GunMetal,
@@ -10,15 +10,48 @@ import {
   standardWrapper,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const DisplayPosts = ({ data, bgImg }) => {
   const bgImageDisplay = getImage(
     bgImg.localFile.childImageSharp.gatsbyImageData
   )
   const bgImageAlt = bgImg.altText
 
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#posts-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `.post-card`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 2,
+          stagger: {
+            each: 0.4,
+          },
+        }
+      )
+  }, [])
+
   return (
     <StyledSection>
-      <div className="wrapper">
+      <div id="posts-trigger" className="wrapper">
         <div className="article-title">
           <h2>Recent Articles & News</h2>
         </div>
@@ -30,7 +63,7 @@ const DisplayPosts = ({ data, bgImg }) => {
             )
             const imageAlt = post.node.post.featuredImage.altText
             return (
-              <PostCard key={index}>
+              <PostCard className="post-card" key={index}>
                 <div>
                   <GatsbyImage
                     image={imageDisplay}
