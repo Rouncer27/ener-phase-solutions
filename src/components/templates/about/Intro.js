@@ -1,7 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { B1Black, BigWrapper, colors, H1White } from "../../../styles/helpers"
+
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
 
 const Intro = ({ data }) => {
   const imageTopDisplay = getImage(
@@ -12,9 +16,82 @@ const Intro = ({ data }) => {
     data.introWithImagesBottom.localFile.childImageSharp.gatsbyImageData
   )
   const imageBotAlt = data.introWithImagesBottom.altText
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#about-intro-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+
+      .fromTo(
+        `.intro-content__title`,
+        {
+          autoAlpha: 0,
+          x: -300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          x: 0,
+          duration: 1.5,
+        },
+        "start+=0"
+      )
+
+      .fromTo(
+        `.intro-content__paragraphs`,
+        {
+          autoAlpha: 0,
+          y: 300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1.5,
+        },
+        "start+=0.3"
+      )
+
+      .fromTo(
+        `.intro-images__image--top`,
+        {
+          autoAlpha: 0,
+          x: 300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          x: 0,
+          duration: 1.5,
+        },
+        "start+=0"
+      )
+      .fromTo(
+        `.intro-images__image--bot`,
+        {
+          autoAlpha: 0,
+          y: 200,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1.5,
+        },
+        "start+=0.3"
+      )
+  }, [])
+
   return (
     <StyledSection>
-      <div className="wrapper">
+      <div id="about-intro-trigger" className="wrapper">
         <div className="intro-content">
           <div className="intro-content__title">
             <h2>{data.introWithImagesTitle}</h2>

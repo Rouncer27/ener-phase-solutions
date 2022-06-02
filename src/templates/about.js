@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
@@ -13,6 +13,11 @@ import Team from "../components/templates/about/Team"
 import SideContent from "../components/templates/about/SideContent"
 import OurClients from "../components/templates/about/OurClients"
 import { colors, H4GunMetal, B1GunMetal } from "../styles/helpers"
+
+const breatheAnimation = keyframes`
+ 0% { opacity: 0; top: 100%; }
+ 100% { opacity: 1; top: 50%; }
+`
 
 const PageMain = styled.div`
   position: relative;
@@ -42,7 +47,10 @@ const MemberModal = styled.div`
   left: 50%;
   width: 45rem;
   transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
   background-color: ${colors.colorSecondary};
+  animation-name: ${breatheAnimation};
+  animation-duration: 0.5s;
   z-index: 100000000000;
 
   @media (min-width: 768px) {
@@ -148,7 +156,7 @@ const About = props => {
       </PageBlur>
 
       {modalActive && (
-        <MemberModal>
+        <MemberModal className="team-modal">
           <div className="modal-image">
             <GatsbyImage
               image={activeContent.imageSrc}

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   B1GunMetal,
@@ -7,17 +7,62 @@ import {
   medWrapper,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const Values = ({ data }) => {
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#values-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `.values-title`,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+        }
+      )
+
+      .fromTo(
+        `.value-item`,
+        {
+          autoAlpha: 0,
+          y: 300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1.5,
+          stagger: {
+            each: 0.2,
+          },
+        },
+        "start+=0.5"
+      )
+  }, [])
+
   return (
     <StyledSection>
-      <div className="wrapper">
+      <div id="values-trigger" className="wrapper">
         <div className="values-title">
           <h2>{data.sideBySideContentTitle}</h2>
         </div>
         <div className="values">
           {data.sideBySideContentBlocks.map((block, index) => {
             return (
-              <BlockStyle key={index}>
+              <BlockStyle className="value-item" key={index}>
                 <div>
                   <h3>{block.title}</h3>
                 </div>
