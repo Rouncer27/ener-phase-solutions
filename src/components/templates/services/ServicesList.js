@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   H2DarkGreen,
@@ -8,10 +8,43 @@ import {
 
 import quotes from "../../../images/graphic-one.png"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const ServicesList = ({ data }) => {
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#list-trigger`,
+          markers: false,
+          start: "top 40%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `.services-list li span`,
+        {
+          autoAlpha: 0,
+          scale: 3,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          scale: 1,
+          duration: 1,
+          stagger: {
+            each: 0.25,
+          },
+        }
+      )
+  }, [])
+
   return (
     <StyledSection>
-      <div className="wrapper">
+      <div id="list-trigger" className="wrapper">
         <div className="services-title">
           <h2>{data.servicesListTitle}</h2>
           <div className="graphic">
@@ -20,7 +53,9 @@ const ServicesList = ({ data }) => {
         </div>
         <ul className="services-list">
           {data.servicesListItems.map((item, index) => (
-            <li key={index}>{item.item}</li>
+            <li key={index}>
+              <span>{item.item}</span>
+            </li>
           ))}
         </ul>
       </div>
@@ -66,6 +101,11 @@ const StyledSection = styled.section`
     li {
       ${H4GunMetal};
       margin-bottom: 0.75rem;
+
+      span {
+        display: inline-block;
+        transform-origin: center center;
+      }
     }
   }
 `
