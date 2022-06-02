@@ -187,26 +187,42 @@ const StyledSection = styled.div`
 
   .home-hero-title {
     position: absolute;
-    top: 15rem;
+    top: 5rem;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 10;
 
+    @media (min-width: 768px) {
+      top: 15rem;
+    }
+
+    @media (min-width: 1025px) {
+      top: 15rem;
+    }
+
     .problem-title,
     .project-title {
       ${HomeHeaderWhite};
       position: absolute;
-      top: 20%;
+      top: 30%;
       left: 30%;
       visibility: hidden;
       opacity: 0;
       text-transform: uppercase;
+
+      @media (min-width: 768px) {
+        top: 20%;
+      }
     }
 
     h1 {
       width: 85rem;
       margin: 10rem auto;
+
+      @media (min-width: 1285px) {
+        width: 100rem;
+      }
 
       .title {
         display: block;
@@ -220,11 +236,50 @@ const StyledSection = styled.div`
           position: absolute;
           opacity: 0;
           top: 12.5%;
-          left: 12.5%;
+          left: 15%;
+
+          @media (min-width: 768px) {
+            top: 10%;
+            left: 12.5vw;
+          }
+
+          @media (min-width: 1025px) {
+            top: 15%;
+            left: 12vw;
+          }
+
+          @media (min-width: 1100px) {
+            top: 15%;
+            left: 14vw;
+          }
+
+          @media (min-width: 1200px) {
+            top: 15%;
+            left: 18%;
+          }
+
+          @media (min-width: 1285px) {
+            top: 15%;
+            left: 15%;
+          }
+
+          @media (min-width: 1500px) {
+            top: 15%;
+            left: 20%;
+          }
+
+          @media (min-width: 1650px) {
+            top: 15%;
+            left: 25%;
+          }
         }
 
         &__two {
-          padding-left: 30rem;
+          padding-left: 20rem;
+
+          @media (min-width: 768px) {
+            padding-left: 30rem;
+          }
         }
       }
 
@@ -233,6 +288,15 @@ const StyledSection = styled.div`
         text-transform: uppercase;
         visibility: hidden;
         opacity: 0;
+        padding-left: 7.5rem;
+
+        @media (min-width: 768px) {
+          padding-left: 12.5vw;
+        }
+
+        @media (min-width: 1025) {
+          padding-left: 0;
+        }
       }
     }
   }
