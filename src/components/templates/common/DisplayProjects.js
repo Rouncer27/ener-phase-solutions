@@ -67,7 +67,7 @@ const DisplayProjects = ({ data }) => {
                       formats={["auto", "webp", "avif"]}
                     />
                   </div>
-                  <div className="project-title">
+                  <div className="project-card__title">
                     <p>{project.node.title}</p>
                     <p>{project.node.project.projectType}</p>
                   </div>
@@ -135,7 +135,7 @@ const Project = styled.div`
     z-index: 1;
   }
 
-  .project-title {
+  .project-card__title {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -156,7 +156,7 @@ const Project = styled.div`
   }
 
   &:hover {
-    .project-title {
+    .project-card__title {
       transform: translateY(0%);
     }
   }

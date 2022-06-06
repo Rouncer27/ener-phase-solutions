@@ -1,8 +1,18 @@
-import React from "react"
+import React, { useState, useRef } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+import LightBox from "./LightBox"
+
 const PostGallery = ({ data }) => {
+  const slickSliderGallery = useRef(null)
+  const [lightboxActive, setLightboxActive] = useState(false)
+  const [indexActive, setIndexActive] = useState(0)
+
+  const handleCloseLightBox = () => {
+    setLightboxActive(false)
+  }
+
   return (
     <StyledDiv>
       <div className="wrapper">
@@ -16,6 +26,10 @@ const PostGallery = ({ data }) => {
               first={index === 0}
               last={index / 4 === 0}
               key={index}
+              onClick={() => {
+                setIndexActive(index)
+                setLightboxActive(!lightboxActive)
+              }}
             >
               <GatsbyImage
                 image={imageDisplay}
@@ -27,11 +41,20 @@ const PostGallery = ({ data }) => {
           )
         })}
       </div>
+      {lightboxActive && (
+        <LightBox
+          lightboxActive={lightboxActive}
+          handleCloseLightBox={handleCloseLightBox}
+          indexActive={indexActive}
+          gallery={data}
+        />
+      )}
     </StyledDiv>
   )
 }
 
 const StyledDiv = styled.div`
+  position: relative;
   margin-top: 5rem;
 
   .wrapper {

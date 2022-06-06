@@ -107,6 +107,7 @@ const PostCard = styled.article`
   width: 100%;
   margin-bottom: 2.5rem;
   background-color: rgba(223, 231, 164, 0.75);
+  box-shadow: 0.25rem 0.25rem 0.3rem 0.25rem rgba(0, 0, 0, 0.25);
 
   @media (min-width: 768px) {
     width: calc(50% - 2rem);
