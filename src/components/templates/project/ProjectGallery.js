@@ -66,6 +66,7 @@ const StyledDiv = styled.div`
 
 const GalleryImage = styled.div`
   width: 100%;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     width: calc(100% / 3);
