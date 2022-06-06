@@ -94,14 +94,13 @@ const ContentBlock = ({ block, index }) => {
         "start+=0"
       )
   }, [])
-
   return (
     <Block
       id={`block-content-tigger-${index}`}
       bgcolor={block.backgroundColor}
       layout={block.reverseLayout}
     >
-      <div className="block-content">
+      <div id={block.blockId} className="block-content">
         <div className={`block-content__main-title bc-title-${index}`}>
           <h2>{block.title}</h2>
         </div>

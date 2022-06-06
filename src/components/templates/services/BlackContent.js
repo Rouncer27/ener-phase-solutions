@@ -25,7 +25,7 @@ const BlackContent = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: data.blackContentBlockTopTitle }}
         />
       </div>
-      <div className="wrapper-bottom">
+      <div id={data.blackContentBlockId} className="wrapper-bottom">
         <div className="wrapper-bottom__inner">
           <div className="image-bottom">
             <GatsbyImage

@@ -73,6 +73,7 @@ export const servicesTempQuery = graphql`
       template {
         ... on WpTemplate_Services {
           servicesTemplate {
+            blackContentBlockId
             blackContentBlockButtonSlug
             blackContentBlockButtonText
             blackContentBlockContent
@@ -98,6 +99,7 @@ export const servicesTempQuery = graphql`
         ... on WpTemplate_Services {
           servicesTemplate {
             contentBesideImageBlocks {
+              blockId
               backgroundColor
               buttonSlug
               buttonText
