@@ -226,46 +226,7 @@ const ContactForm = ({ data }) => {
                   />
                 </label>
               </InputField>
-              <DropdownInputStyled>
-                <label htmlFor="projectType">
-                  What type of service are you looking for?
-                </label>
-                <select
-                  value={formData.projectType}
-                  name="projectType"
-                  id="projectType"
-                  onChange={handleOnChange}
-                >
-                  <option value="">
-                    -- Please choose a project / service --
-                  </option>
-                  <option value="Power System Design">
-                    Power System Design
-                  </option>
-                  <option value="Power Systems Engineering">
-                    Power Systems Engineering
-                  </option>
-                  <option value="Design-Buld Engineering">
-                    Design-Buld Engineering
-                  </option>
-                  <option value="Power System Evaluation">
-                    Power System Evaluation
-                  </option>
-                  <option value="Maintenance Planning">
-                    Maintenance Planning
-                  </option>
-                  <option value="Retrofits/Upgrades">Retrofits/Upgrades</option>
 
-                  <option value="Technical Training">Technical Training</option>
-
-                  <option value="Multi-year Maintenance Contracts">
-                    Multi-year Maintenance Contracts
-                  </option>
-                  <option value="Medium Voltage Terminations">
-                    Medium Voltage Terminations
-                  </option>
-                </select>
-              </DropdownInputStyled>
               <InputField>
                 <label htmlFor="location">
                   Project Location<span className="required">&#42;</span>
@@ -323,6 +284,47 @@ const ContactForm = ({ data }) => {
               </button>
             </div>
             <div className="form-right">
+              <DropdownInputStyled>
+                <label htmlFor="projectType">
+                  What type of service are you looking for?
+                  <span className="required">&#42;</span>
+                </label>
+                <select
+                  value={formData.projectType}
+                  name="projectType"
+                  id="projectType"
+                  onChange={handleOnChange}
+                >
+                  <option value="">
+                    -- Please choose a project / service --
+                  </option>
+                  <option value="Power System Design">
+                    Power System Design
+                  </option>
+                  <option value="Power Systems Engineering">
+                    Power Systems Engineering
+                  </option>
+                  <option value="Design-Buld Engineering">
+                    Design-Buld Engineering
+                  </option>
+                  <option value="Power System Evaluation">
+                    Power System Evaluation
+                  </option>
+                  <option value="Maintenance Planning">
+                    Maintenance Planning
+                  </option>
+                  <option value="Retrofits/Upgrades">Retrofits/Upgrades</option>
+
+                  <option value="Technical Training">Technical Training</option>
+
+                  <option value="Multi-year Maintenance Contracts">
+                    Multi-year Maintenance Contracts
+                  </option>
+                  <option value="Medium Voltage Terminations">
+                    Medium Voltage Terminations
+                  </option>
+                </select>
+              </DropdownInputStyled>
               <InputField size="full">
                 <label htmlFor="howHelp">
                   How can we help you?<span className="required">&#42;</span>
@@ -374,13 +376,13 @@ const ContactForm = ({ data }) => {
                   />
                 </label>
               </InputField>
-              <div className="btn-submit">
-                <button type="submit">Submit</button>
-              </div>
             </div>
 
             <div className="required-info">
               <p>&#42; required fields</p>
+            </div>
+            <div className="btn-submit">
+              <button type="submit">Submit Form</button>
             </div>
           </form>
         </div>
@@ -450,11 +452,12 @@ const SectionStyled = styled.section`
 
       .required-info {
         position: absolute;
-        right: 2rem;
-        bottom: 0;
+        left: 20rem;
+        bottom: 1.5rem;
 
         p {
           ${B1GunMetal};
+          font-weight: bold;
           margin: 0;
         }
       }
