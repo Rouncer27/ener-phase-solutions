@@ -42,7 +42,10 @@ const DisplayTestimonials = ({ data }) => {
 }
 
 const StyledDiv = styled.div`
-  margin-top: -5rem;
+  margin-top: 2.5rem;
+  @media (min-width: 768px) {
+    margin-top: -5rem;
+  }
 
   .wrapper {
     ${standardWrapper};
@@ -69,11 +72,12 @@ const StyledDiv = styled.div`
   }
 
   .testimonial-content {
-    width: 80%;
+    width: 100%;
     padding: 4.8rem 6.6rem;
     background-color: ${colors.colorSecondary};
 
     @media (min-width: 768px) {
+      width: 80%;
       max-width: 70rem;
     }
 

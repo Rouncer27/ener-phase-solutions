@@ -105,7 +105,7 @@ const ContentBlock = ({ block, index }) => {
         },
       })
       .fromTo(
-        `.block-graphic`,
+        `.block-graphic-${index}`,
         {
           y: 200,
         },
@@ -141,7 +141,7 @@ const ContentBlock = ({ block, index }) => {
           formats={["auto", "webp", "avif"]}
         />
       </div>
-      <div className="block-graphic" />
+      <div className={`block-graphic block-graphic-${index}`} />
     </Block>
   )
 }

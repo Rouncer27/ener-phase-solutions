@@ -230,8 +230,8 @@ const StyledIcon = styled.li`
       fill: ${colors.white};
 
       @media (min-width: 768px) {
-        width: 4rem;
-        height: 4rem;
+        width: 2rem;
+        height: 2rem;
       }
       @media (min-width: 1025px) {
         width: 3.25rem;
