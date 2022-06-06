@@ -114,7 +114,11 @@ const SectionStyled = styled.section`
 
     a {
       ${Btn1One};
-      margin: auto 1rem;
+      margin: 2rem;
+
+      @media (min-width: 768px) {
+        margin: auto 1rem;
+      }
     }
   }
 `

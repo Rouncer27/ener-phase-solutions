@@ -281,8 +281,7 @@ const LeadershipTeam = styled.div`
 `
 
 const OperationalMembers = styled.div`
-  width: calc(50% - 1rem);
-  margin: 2rem 0.5rem;
+  width: calc(100% - 1rem);
   background-color: ${colors.colorPrimary};
 
   @media (min-width: 768px) {

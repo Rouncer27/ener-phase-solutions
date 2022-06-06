@@ -206,13 +206,18 @@ const StyledSection = styled.div`
       ${HomeHeaderWhite};
       position: absolute;
       top: 30%;
-      left: 30%;
+      left: 20%;
       visibility: hidden;
       opacity: 0;
       text-transform: uppercase;
 
+      @media (min-width: 376px) {
+        left: 30%;
+      }
+
       @media (min-width: 768px) {
         top: 20%;
+        left: 30%;
       }
     }
 
@@ -236,7 +241,12 @@ const StyledSection = styled.div`
           position: absolute;
           opacity: 0;
           top: 12.5%;
-          left: 15%;
+          left: 5%;
+
+          @media (min-width: 376px) {
+            top: 12.5%;
+            left: 15%;
+          }
 
           @media (min-width: 768px) {
             top: 10%;
@@ -275,7 +285,11 @@ const StyledSection = styled.div`
         }
 
         &__two {
-          padding-left: 20rem;
+          padding-left: 15rem;
+
+          @media (min-width: 376px) {
+            padding-left: 20rem;
+          }
 
           @media (min-width: 768px) {
             padding-left: 30rem;
@@ -288,7 +302,15 @@ const StyledSection = styled.div`
         text-transform: uppercase;
         visibility: hidden;
         opacity: 0;
-        padding-left: 7.5rem;
+        padding-left: 3rem;
+
+        @media (min-width: 376px) {
+          padding-left: 6rem;
+        }
+
+        @media (min-width: 425px) {
+          padding-left: 7.5rem;
+        }
 
         @media (min-width: 768px) {
           padding-left: 12.5vw;

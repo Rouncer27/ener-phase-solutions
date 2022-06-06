@@ -4,7 +4,7 @@ import { css } from "styled-components"
 
 // Headline Styles #1 //
 export const HomeHeaderBase = css`
-  ${fontSizer(6, 10, 76.8, 150, 5)};
+  ${fontSizer(6, 10, 76.8, 150, 4)};
   font-weight: 900;
   font-stretch: normal;
   font-style: normal;

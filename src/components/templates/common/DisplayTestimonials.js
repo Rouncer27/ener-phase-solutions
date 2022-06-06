@@ -73,12 +73,13 @@ const StyledDiv = styled.div`
 
   .testimonial-content {
     width: 100%;
-    padding: 4.8rem 6.6rem;
+    padding: 1.5rem;
     background-color: ${colors.colorSecondary};
 
     @media (min-width: 768px) {
       width: 80%;
       max-width: 70rem;
+      padding: 4.8rem 6.6rem;
     }
 
     p {

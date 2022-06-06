@@ -45,13 +45,21 @@ const MemberModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 45rem;
+  width: 35rem;
   transform: translate(-50%, -50%);
   transition: all 0.3s ease;
   background-color: ${colors.colorSecondary};
   animation-name: ${breatheAnimation};
   animation-duration: 0.5s;
   z-index: 100000000000;
+
+  @media (min-width: 375px) {
+    width: 37.5rem;
+  }
+
+  @media (min-width: 450px) {
+    width: 45rem;
+  }
 
   @media (min-width: 768px) {
     width: 55rem;
@@ -106,13 +114,13 @@ const MemberModal = styled.div`
       margin: 0;
       border: solid 0.1rem ${colors.colorTertiary};
       border-radius: 50%;
-      background-color: transparent;
+      background-color: ${colors.white};
       transition: all 0.3s ease;
       text-transform: uppercase;
       cursor: pointer;
 
       &:hover {
-        background-color: ${colors.white};
+        background-color: ${colors.colorSecondary};
         border-color: ${colors.colorPrimary};
         color: ${colors.colorPrimary};
       }
