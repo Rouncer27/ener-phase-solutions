@@ -93,6 +93,27 @@ const ContentBlock = ({ block, index }) => {
         },
         "start+=0"
       )
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#block-content-tigger-${index}`,
+          markers: false,
+          start: "top 100%",
+          end: "bottom 0%",
+          scrub: 1.5,
+        },
+      })
+      .fromTo(
+        `.block-graphic`,
+        {
+          y: 200,
+        },
+        {
+          ease: "none",
+          y: 0,
+        }
+      )
   }, [])
   return (
     <Block
@@ -120,6 +141,7 @@ const ContentBlock = ({ block, index }) => {
           formats={["auto", "webp", "avif"]}
         />
       </div>
+      <div className="block-graphic" />
     </Block>
   )
 }
@@ -129,6 +151,7 @@ const Block = styled.div`
   flex-direction: ${props => (props.layout ? "row-reverse" : "row")};
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
   width: 100%;
   padding: 4rem 0;
   background-color: ${props =>
@@ -140,6 +163,16 @@ const Block = styled.div`
 
   @media (min-width: 1025px) {
     padding: 8rem 0;
+  }
+
+  .block-graphic {
+    position: absolute;
+    top: 2rem;
+    right: ${props => (props.bgcolor !== "white" ? "auto" : "0rem")};
+    left: ${props => (props.bgcolor !== "white" ? "0rem" : "auto")};
+    width: 10rem;
+    height: 31rem;
+    background-color: rgba(54, 170, 99, 0.65);
   }
 
   .block-content {

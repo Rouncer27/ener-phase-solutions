@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -13,13 +13,41 @@ import {
 } from "../../../styles/helpers"
 import { Link } from "gatsby"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const BlackContent = ({ data }) => {
   const imageDisplay = getImage(
     data.blackContentBlockImage.localFile.childImageSharp.gatsbyImageData
   )
   const imageAlt = data.blackContentBlockImage.altText
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#content-para-trigger",
+          markers: false,
+          start: "top 100%",
+          end: "bottom 0%",
+          scrub: 1.5,
+        },
+      })
+      .fromTo(
+        `.para-black-bg-graphic`,
+        {
+          y: 400,
+        },
+        {
+          ease: "none",
+          y: 0,
+        }
+      )
+  }, [])
+
   return (
-    <StyledSection>
+    <StyledSection id="content-para-trigger">
       <div className="wrapper-top">
         <h2
           dangerouslySetInnerHTML={{ __html: data.blackContentBlockTopTitle }}
@@ -53,11 +81,13 @@ const BlackContent = ({ data }) => {
           </div>
         </div>
       </div>
+      <div className="para-black-bg-graphic" />
     </StyledSection>
   )
 }
 
 const StyledSection = styled.section`
+  position: relative;
   .wrapper-top {
     padding: 2rem 4rem;
 
@@ -65,6 +95,15 @@ const StyledSection = styled.section`
       ${H1SeaWeedGreen};
       text-align: center;
     }
+  }
+
+  .para-black-bg-graphic {
+    position: absolute;
+    top: 30rem;
+    left: 0;
+    width: 10rem;
+    height: 31rem;
+    background-color: rgba(54, 170, 99, 0.65);
   }
 
   .wrapper-bottom {

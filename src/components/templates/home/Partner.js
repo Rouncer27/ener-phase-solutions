@@ -44,10 +44,31 @@ const Partner = ({ data }) => {
     function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#partner-trigger",
+          markers: false,
+          start: "top 100%",
+          end: "bottom 0%",
+          scrub: 1.5,
+        },
+      })
+      .fromTo(
+        `.partner-graphic`,
+        {
+          y: 400,
+        },
+        {
+          ease: "none",
+          y: 0,
+        }
+      )
   }, [])
 
   return (
-    <StyledSection>
+    <StyledSection id="partner-trigger">
       <div className="wrapper">
         <div className="partner-title">
           <h2>{data.truePartnerTitle}</h2>
@@ -87,17 +108,28 @@ const Partner = ({ data }) => {
           })}
         </div>
       </div>
+      <div className="partner-graphic" />
     </StyledSection>
   )
 }
 
 const StyledSection = styled.section`
+  position: relative;
   padding-top: 10rem;
   padding-bottom: 10rem;
   background-color: ${colors.black};
 
   .wrapper {
     ${standardWrapper};
+  }
+
+  .partner-graphic {
+    position: absolute;
+    top: 20rem;
+    left: 0;
+    width: 10rem;
+    height: 31rem;
+    background-color: rgba(54, 170, 99, 0.65);
   }
 
   .partner-title {

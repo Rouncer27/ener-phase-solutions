@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import {
@@ -10,6 +10,10 @@ import {
   B1White,
 } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const OurClients = ({ data }) => {
   const [activeList, setActiveList] = useState(1)
 
@@ -17,8 +21,31 @@ const OurClients = ({ data }) => {
     setActiveList(item)
   }
 
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#clients-trigger",
+          markers: false,
+          start: "top 100%",
+          end: "bottom 0%",
+          scrub: 1.5,
+        },
+      })
+      .fromTo(
+        `.bg-graphic`,
+        {
+          y: 400,
+        },
+        {
+          ease: "none",
+          y: 0,
+        }
+      )
+  }, [])
+
   return (
-    <StyledSection>
+    <StyledSection id="clients-trigger">
       <div className="wrapper">
         <div className="title">
           <h2>{data.clientsListsTitle}</h2>
