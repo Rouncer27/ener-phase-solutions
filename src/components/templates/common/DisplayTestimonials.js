@@ -4,7 +4,6 @@ import {
   standardWrapper,
   H4Green,
   colors,
-  H3GunMetal,
   H3White,
 } from "../../../styles/helpers"
 

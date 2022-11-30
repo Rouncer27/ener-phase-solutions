@@ -4,11 +4,9 @@ import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
   B1Black,
-  Btn1One,
   Btn1Two,
   colors,
   H3GunMetal,
-  medWrapper,
   standardWrapper,
 } from "../../../styles/helpers"
 

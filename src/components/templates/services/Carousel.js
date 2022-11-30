@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import { colors, H3GunMetal, H3White, H4Green } from "../../../styles/helpers"
+import { colors, H3White, H4Green } from "../../../styles/helpers"
 
 import quotes from "../../../images/test-quotes.png"
 
