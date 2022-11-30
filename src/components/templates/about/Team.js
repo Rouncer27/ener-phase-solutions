@@ -209,6 +209,7 @@ const StyledSection = styled.section`
 
       h2 {
         ${H3White};
+        opacity: 0.7;
       }
     }
   }
@@ -237,6 +238,7 @@ const StyledSection = styled.section`
 
       h2 {
         ${H3White};
+        opacity: 0.7;
       }
     }
   }
@@ -245,7 +247,7 @@ const StyledSection = styled.section`
 const LeadershipTeam = styled.div`
   width: 100%;
   margin-bottom: 5rem;
-  background-color: ${colors.colorSecondary};
+  background-color: ${colors.white};
 
   @media (min-width: 768px) {
     width: calc(50% - 2rem);
@@ -255,6 +257,7 @@ const LeadershipTeam = styled.div`
   .leader-content {
     width: 100%;
     padding: 2rem;
+    border-top: 0.5rem solid ${colors.colorSecondary};
     text-align: center;
 
     h3 {

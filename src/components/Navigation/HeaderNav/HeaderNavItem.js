@@ -84,12 +84,13 @@ const HeaderNavItemStyled = styled.li`
     transition: all 0.35s ease-in-out;
 
     &:hover {
+      background-color: rgba(148, 200, 61, 0.5);
       color: ${colors.colorPrimary};
     }
 
     &[aria-current="page"] {
       color: ${colors.colorTertiary};
-      background-color: ${colors.colorSecondary};
+      background-color: rgba(148, 200, 61, 0.5);
 
       &:hover {
         cursor: default;
@@ -98,7 +99,7 @@ const HeaderNavItemStyled = styled.li`
   }
 
   &.highlight a {
-    background-color: ${colors.colorPrimary};
+    background-color: rgba(148, 200, 61, 0.5);
     border-radius: 0.5rem;
     color: ${colors.white};
   }

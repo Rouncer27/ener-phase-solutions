@@ -1,14 +1,45 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 
 import HeroImage from "../common/HeroImage"
 
 import { colors, H1LightKhaki, B1White } from "../../../styles/helpers"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const PageHero = ({ data }) => {
   const bgImg = data.pageHeroImage
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: `#page-hero-tigger`,
+          markers: false,
+          start: "bottom 80%",
+          toggleActions: "play none none none",
+        },
+      })
+      .fromTo(
+        `.hero-content`,
+        {
+          duration: 1.5,
+          autoAlpha: 0,
+          x: -200,
+        },
+        {
+          duration: 1.5,
+          autoAlpha: 1,
+          x: 0,
+          ease: "power2.out",
+        }
+      )
+  }, [])
+
   return (
-    <SectionStyled>
+    <SectionStyled id="page-hero-tigger">
       <div className="hero-content">
         <h2>{data.pageHeroTitle}</h2>
         <div dangerouslySetInnerHTML={{ __html: data.pageHeroContent }} />

@@ -122,7 +122,7 @@ const StyledSection = styled.section`
     left: 0rem;
     width: 5rem;
     height: 40rem;
-    background-color: rgba(54, 170, 99, 0.64);
+    background-color: rgba(148, 200, 61, 0.64);
 
     @media (min-width: 768px) {
       display: block;
