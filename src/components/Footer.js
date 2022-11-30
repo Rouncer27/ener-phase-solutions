@@ -193,7 +193,7 @@ const StyledIcon = styled.li`
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
-    background-color: ${colors.colorPrimary};
+    background-color: ${colors.colorSecondary};
 
     @media (min-width: 768px) {
       width: 4rem;

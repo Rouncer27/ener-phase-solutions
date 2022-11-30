@@ -91,6 +91,25 @@ const ProjectCard = styled.div`
     height: 60rem;
   }
 
+  a {
+    &::after {
+      position: absolute;
+      top: -6.5rem;
+      left: -1.5rem;
+      width: 0;
+      height: 0;
+      transform: rotate(45deg);
+      transform-origin: center center;
+      transition: all 0.3s ease-out;
+      border-top: 10rem solid transparent;
+      border-bottom: 10rem solid transparent;
+      border-right: 10rem solid rgba(148, 200, 61, 1);
+      opacity: 0;
+      z-index: 100;
+      content: "";
+    }
+  }
+
   .project-content {
     position: absolute;
     right: 0;
@@ -98,6 +117,8 @@ const ProjectCard = styled.div`
     left: 0;
     padding: 7rem 6rem;
     background-color: rgba(0, 0, 0, 0.75);
+    border-top: 0.5rem solid transparent;
+    transition: all 0.3s ease-out;
     z-index: 100;
 
     h2 {
@@ -114,8 +135,16 @@ const ProjectCard = styled.div`
     button {
       ${Btn1Two};
       background-color: transparent;
-      color: ${colors.colorSecondary};
       text-transform: uppercase;
+    }
+  }
+
+  a:hover {
+    .project-content {
+      border-top: 0.5rem solid ${colors.colorSecondary};
+    }
+    &::after {
+      opacity: 0.75;
     }
   }
 `

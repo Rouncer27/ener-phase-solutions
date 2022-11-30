@@ -4,7 +4,7 @@ import {
   B1GunMetal,
   H1SeaWeedGreen,
   H3GunMetal,
-  medWrapper,
+  standardWrapper,
 } from "../../../styles/helpers"
 
 const Intro = ({ data }) => {
@@ -26,7 +26,7 @@ const Intro = ({ data }) => {
 
 const StyledSection = styled.section`
   .wrapper {
-    ${medWrapper};
+    ${standardWrapper};
   }
 
   .intro-title {

@@ -5,8 +5,11 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
   B1Black,
   Btn1One,
+  Btn1Two,
+  colors,
   H3GunMetal,
   medWrapper,
+  standardWrapper,
 } from "../../../styles/helpers"
 
 const getData = graphql`
@@ -97,7 +100,7 @@ const Posts = () => {
 
 const StyledSection = styled.section`
   .wrapper {
-    ${medWrapper};
+    ${standardWrapper};
     justify-content: flex-start;
   }
 `
@@ -106,13 +109,34 @@ const PostCard = styled.article`
   position: relative;
   width: 100%;
   margin-bottom: 2.5rem;
-  background-color: rgba(223, 231, 164, 0.75);
+  background-color: rgba(148, 200, 61, 0.7);
   box-shadow: 0.25rem 0.25rem 0.3rem 0.25rem rgba(0, 0, 0, 0.25);
 
   @media (min-width: 768px) {
     width: calc(50% - 2rem);
     margin: 2rem 1rem;
-    background-color: rgba(223, 231, 164, 0.35);
+    background-color: #d5d5d5;
+  }
+
+  a {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: -6.5rem;
+      left: -1.5rem;
+      width: 0;
+      height: 0;
+      transform: rotate(45deg);
+      transform-origin: center center;
+      transition: all 0.3s ease-out;
+      border-top: 10rem solid transparent;
+      border-bottom: 10rem solid transparent;
+      border-right: 10rem solid rgba(148, 200, 61, 1);
+      opacity: 0;
+      z-index: 100;
+      content: "";
+    }
   }
 
   .post-image {
@@ -151,6 +175,8 @@ const PostCard = styled.article`
     position: relative;
     width: 100%;
     padding: 2rem;
+    transition: all 0.3s ease-out;
+    border-top: 0.5rem solid transparent;
 
     @media (min-width: 768px) {
       padding: 6rem;
@@ -193,8 +219,20 @@ const PostCard = styled.article`
 
     &__button {
       button {
-        ${Btn1One};
+        ${Btn1Two};
         background-color: transparent;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      .post-content {
+        border-top: 0.5rem solid ${colors.colorSecondary};
+      }
+
+      &::after {
+        opacity: 0.75;
       }
     }
   }

@@ -154,6 +154,14 @@ const ContactForm = ({ data }) => {
   return (
     <SectionStyled>
       <div className="wrapper">
+        <div className="form-details">
+          <p>
+            Fill out the information below to learn more about how we can help.
+          </p>
+          <p>
+            We aim to get back to you within 3 business days of inquiry sent.
+          </p>
+        </div>
         <div className="contact-form">
           <form onSubmit={handleOnSubmit}>
             <div className="form-left">
@@ -415,6 +423,17 @@ const SectionStyled = styled.section`
     }
     @media (min-width: 1025px) {
       padding-left: 6vw;
+    }
+  }
+
+  .form-details {
+    width: 100%;
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
+
+    p {
+      ${B1GunMetal};
+      margin-bottom: 0;
     }
   }
 

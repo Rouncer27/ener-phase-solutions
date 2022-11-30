@@ -56,14 +56,14 @@ export const Btn1One = css`
 
 export const Btn1Two = css`
   ${Btn1Base};
-  background: ${colors.colorSecondary};
+  background: transparent;
   border: solid 0.1rem ${colors.colorSecondary};
-  color: ${colors.colorPrimary};
+  color: ${colors.colorSecondary};
 
   &:hover {
     background: ${colors.colorPrimary};
     border-color: ${colors.colorPrimary};
-    color: ${colors.colorSecondary};
+    color: ${colors.white};
   }
 
   &:focus {
@@ -77,7 +77,7 @@ export const Btn1Two = css`
     &:hover {
       background: ${colors.colorSecondary};
       border-color: ${colors.colorSecondary};
-      color: ${colors.colorPrimary};
+      color: ${colors.white};
       cursor: not-allowed;
     }
   }
