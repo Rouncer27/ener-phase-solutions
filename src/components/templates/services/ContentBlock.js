@@ -172,7 +172,7 @@ const Block = styled.div`
     left: ${props => (props.bgcolor !== "white" ? "0rem" : "auto")};
     width: 10rem;
     height: 31rem;
-    background-color: rgba(54, 170, 99, 0.65);
+    background-color: rgba(148, 200, 61, 0.65);
   }
 
   .block-content {

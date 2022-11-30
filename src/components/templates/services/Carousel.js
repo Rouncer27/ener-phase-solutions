@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import { colors, H3GunMetal, H4Green } from "../../../styles/helpers"
+import { colors, H3GunMetal, H3White, H4Green } from "../../../styles/helpers"
 
 import quotes from "../../../images/test-quotes.png"
 
@@ -118,6 +118,7 @@ const CarouselWrapper = styled.div`
         width: 5rem;
         height: 5rem;
         margin: 0 auto 4rem;
+        color: ${colors.colorSecondary};
       }
     }
   }
@@ -125,7 +126,7 @@ const CarouselWrapper = styled.div`
 
 const SlideStyled = styled.div`
   padding: 2rem 3rem;
-  background-color: ${colors.colorSecondary};
+  background-color: ${colors.colorPrimary};
 
   @media (min-width: 768px) {
     padding: 4rem;
@@ -136,7 +137,7 @@ const SlideStyled = styled.div`
   }
 
   p {
-    ${H3GunMetal};
+    ${H3White};
 
     &:last-of-type {
       margin: 0;

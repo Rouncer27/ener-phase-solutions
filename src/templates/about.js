@@ -48,7 +48,7 @@ const MemberModal = styled.div`
   width: 35rem;
   transform: translate(-50%, -50%);
   transition: all 0.3s ease;
-  background-color: ${colors.colorSecondary};
+  background-color: ${colors.white};
   animation-name: ${breatheAnimation};
   animation-duration: 0.5s;
   z-index: 100000000000;
@@ -77,6 +77,7 @@ const MemberModal = styled.div`
   .modal-content {
     width: 100%;
     padding: 2rem;
+    border-top: 0.4rem solid ${colors.colorSecondary};
     text-align: center;
 
     @media (min-width: 768px) {
@@ -114,8 +115,9 @@ const MemberModal = styled.div`
       margin: 0;
       border: solid 0.1rem ${colors.colorTertiary};
       border-radius: 50%;
-      background-color: ${colors.white};
+      background-color: ${colors.black};
       transition: all 0.3s ease;
+      color: ${colors.white};
       text-transform: uppercase;
       cursor: pointer;
 

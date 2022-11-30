@@ -103,7 +103,7 @@ const StyledSection = styled.section`
     left: 0;
     width: 10rem;
     height: 31rem;
-    background-color: rgba(54, 170, 99, 0.65);
+    background-color: rgba(148, 200, 61, 0.65);
   }
 
   .wrapper-bottom {
