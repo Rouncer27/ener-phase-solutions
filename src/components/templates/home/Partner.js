@@ -5,6 +5,7 @@ import {
   B1White,
   colors,
   H1LightKhaki,
+  H1White,
   H3White,
   standardWrapper,
 } from "../../../styles/helpers"
@@ -129,7 +130,7 @@ const StyledSection = styled.section`
     left: 0;
     width: 10rem;
     height: 31rem;
-    background-color: rgba(54, 170, 99, 0.65);
+    background-color: rgba(148, 200, 61, 0.65);
   }
 
   .partner-title {
@@ -137,7 +138,7 @@ const StyledSection = styled.section`
     text-align: center;
 
     h2 {
-      ${H1LightKhaki};
+      ${H1White};
     }
   }
 
@@ -201,6 +202,7 @@ const StyledStat = styled.div`
 
   .stat-content {
     width: 75%;
+    text-align: center;
 
     p:first-of-type {
       ${H1LightKhaki};

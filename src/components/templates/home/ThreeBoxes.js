@@ -92,7 +92,7 @@ const BoxStyled = styled.div`
   width: 100%;
   margin: 2.5rem auto;
   border-radius: 0.5rem;
-  box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.25);
 
   @media (min-width: 768px) {
     width: calc(33.33333333% - 2rem);
@@ -105,11 +105,29 @@ const BoxStyled = styled.div`
   }
 
   a {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
     width: 100%;
     height: 100%;
+    border: solid 0.3rem transparent;
+
+    &::after {
+      position: absolute;
+      top: -6.5rem;
+      left: -1.5rem;
+      width: 0;
+      height: 0;
+      transform: rotate(45deg);
+      transform-origin: center center;
+      transition: all 0.3s ease-out;
+      border-top: 10rem solid transparent;
+      border-bottom: 10rem solid transparent;
+      border-right: 10rem solid rgba(148, 200, 61, 1);
+      opacity: 0;
+      content: "";
+    }
   }
 
   .box-text {
@@ -146,8 +164,13 @@ const BoxStyled = styled.div`
 
   &:hover {
     a {
+      border: solid 0.3rem ${colors.colorSecondary};
+
+      &::after {
+        opacity: 0.6;
+      }
+
       .box-text {
-        border: solid 0.3rem ${colors.colorAccent};
       }
     }
   }

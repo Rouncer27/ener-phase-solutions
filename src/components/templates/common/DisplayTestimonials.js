@@ -5,6 +5,7 @@ import {
   H4Green,
   colors,
   H3GunMetal,
+  H3White,
 } from "../../../styles/helpers"
 
 const DisplayTestimonials = ({ data }) => {
@@ -67,6 +68,7 @@ const StyledDiv = styled.div`
         font-size: 20rem;
         font-weight: normal;
         line-height: 0;
+        color: ${colors.colorSecondary};
       }
     }
   }
@@ -74,7 +76,7 @@ const StyledDiv = styled.div`
   .testimonial-content {
     width: 100%;
     padding: 1.5rem;
-    background-color: ${colors.colorSecondary};
+    background-color: ${colors.colorPrimary};
 
     @media (min-width: 768px) {
       width: 80%;
@@ -83,7 +85,7 @@ const StyledDiv = styled.div`
     }
 
     p {
-      ${H3GunMetal};
+      ${H3White};
     }
 
     &__name {

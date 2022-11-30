@@ -148,7 +148,7 @@ const Project = styled.div`
     bottom: 0;
     left: 0;
     padding: 2.3rem 1.8rem;
-    background-color: rgba(54, 170, 99, 0.65);
+    background-color: rgba(148, 200, 61, 0.65);
     transform: translateY(100%);
     transition: all 0.3s ease-out;
     z-index: 10;

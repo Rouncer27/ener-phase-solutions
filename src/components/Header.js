@@ -31,7 +31,7 @@ const StyledHeader = styled.header`
   padding-top: 5rem;
   background: linear-gradient(
     -177.5deg,
-    #1f793e 35%,
+    #193768 35%,
     rgba(255, 255, 255, 1) 35%
   );
   z-index: 999999;
