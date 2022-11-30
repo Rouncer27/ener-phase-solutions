@@ -86,7 +86,7 @@ const Footer = () => {
 
 const StyledFooter = styled.footer`
   padding: 4rem 0;
-  background-color: ${colors.colorTertiary};
+  background-color: ${colors.colorPrimary};
 
   .wrapper {
     ${medWrapper};
@@ -112,11 +112,10 @@ const StyledFooter = styled.footer`
 
         a {
           ${B1White};
-          color: ${colors.colorSecondary};
           text-transform: uppercase;
 
           &:hover {
-            color: ${colors.colorAccent};
+            color: ${colors.colorSecondary};
           }
         }
       }
