@@ -7,6 +7,8 @@ import MainLogo from "./Logos/MainLogo"
 import HeaderNav from "./Navigation/HeaderNav/HeaderNav"
 import MobileNav from "./Navigation/MobileNav/MobileNav"
 
+import topGraphic from "../images/top-graphic.png"
+
 const Header = ({ siteTitle }) => (
   <StyledHeader>
     <div className="header__wrapper">
@@ -29,11 +31,15 @@ const Header = ({ siteTitle }) => (
 const StyledHeader = styled.header`
   position: relative;
   padding-top: 5rem;
-  background: linear-gradient(
+  /* background: linear-gradient(
     -177.5deg,
     #193768 35%,
     rgba(255, 255, 255, 1) 35%
-  );
+  ); */
+  background-image: url(${topGraphic});
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
   z-index: 999999;
 
   .header__wrapper {
