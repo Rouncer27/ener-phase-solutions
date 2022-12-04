@@ -1,7 +1,1 @@
-# a path:
-/templates/index.html
-  # headers for that path:
-  X-Frame-Options: SAMEORIGIN
-# any other paths:
-/*
-  X-Frame-Options: SAMEORIGIN
+X-Frame-Options: SAMEORIGIN
