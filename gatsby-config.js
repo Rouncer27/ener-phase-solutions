@@ -48,7 +48,7 @@ module.exports = {
       options: {
         mergeSecurityHeaders: false,
         headers: {
-          "/*": ["X-Frame-Options: sameorigin"],
+          "/*": [],
         },
       },
     },
