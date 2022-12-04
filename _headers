@@ -4,4 +4,4 @@
   X-Frame-Options: SAMEORIGIN
 # any other paths:
 /*
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
