@@ -48,6 +48,7 @@ module.exports = {
       options: {
         mergeSecurityHeaders: false,
         headers: {
+          "/contact-us": [],
           "/*": [
             "cache-control: public,max-age=60",
             "X-Frame-Options: sameorigin",
