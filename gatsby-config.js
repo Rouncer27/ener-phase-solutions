@@ -43,7 +43,15 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
       },
     },
-    `gatsby-plugin-netlify`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        mergeSecurityHeaders: false,
+        headers: {
+          "/*": ["X-Frame-Options: sameorigin"],
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
