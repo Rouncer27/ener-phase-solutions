@@ -63,7 +63,7 @@ module.exports = {
             "X-Content-Type-Options: nosniff",
             "Feature-Policy: camera 'none'; geolocation 'none'; microphone 'none'",
             "X-Frame-Options: ALLOWALL",
-            "Referrer-Policy: ALLOWALL",
+            "Referrer-Policy: no-referrer",
           ],
         },
       },
