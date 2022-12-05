@@ -48,9 +48,16 @@ module.exports = {
       options: {
         mergeSecurityHeaders: false,
         headers: {
-          "/contact-us": [],
           "/*": [
             "cache-control: public,max-age=60",
+            "X-Frame-Options: sameorigin",
+            "X-XSS-Protection: 1; mode=block",
+            "X-Content-Type-Options: nosniff",
+            "Feature-Policy: camera 'none'; geolocation 'none'; microphone 'none'",
+          ],
+          "/contact-us": [
+            "cache-control: public,max-age=60",
+            "X-Frame-Options: deny",
             "X-XSS-Protection: 1; mode=block",
             "X-Content-Type-Options: nosniff",
             "Feature-Policy: camera 'none'; geolocation 'none'; microphone 'none'",
