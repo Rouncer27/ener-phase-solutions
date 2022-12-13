@@ -11,6 +11,7 @@ import Values from "../components/templates/about/Values"
 import PageHero from "../components/templates/about/PageHero"
 import Team from "../components/templates/about/Team"
 import SideContent from "../components/templates/about/SideContent"
+import Logos from "../components/templates/about/Logos"
 import OurClients from "../components/templates/about/OurClients"
 import { colors, H4GunMetal, B1GunMetal } from "../styles/helpers"
 
@@ -161,6 +162,7 @@ const About = props => {
             setActiveContent={setActiveContent}
           />
           <SideContent data={props.data.sideContent.template.aboutTemplate} />
+          <Logos data={props.data.logos.template.aboutTemplate} />
           <OurClients data={props.data.ourClients.template.aboutTemplate} />
         </Layout>
       </PageBlur>
@@ -338,6 +340,28 @@ export const aboutTempQuery = graphql`
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+
+    logos: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_About {
+          aboutTemplate {
+            logosTitle
+            logos {
+              logo {
+                altText
+                localFile {
+                  url
+                  childImageSharp {
+                    gatsbyImageData(width: 1000)
+                  }
+                }
+              }
+              url
             }
           }
         }
