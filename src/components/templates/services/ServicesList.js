@@ -47,9 +47,9 @@ const ServicesList = ({ data }) => {
       <div id="list-trigger" className="wrapper">
         <div className="services-title">
           <h2>{data.servicesListTitle}</h2>
-          <div className="graphic">
+          {/* <div className="graphic">
             <img src={quotes} alt="" />
-          </div>
+          </div> */}
         </div>
         <ul className="services-list">
           {data.servicesListItems.map((item, index) => (

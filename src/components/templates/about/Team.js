@@ -22,11 +22,11 @@ const Team = ({ data, setModalActive, setActiveContent }) => {
 
   useEffect(() => {
     const leaderTitle = document.querySelector(".leadership-team__title h2")
-    const operationalTitle = document.querySelector(
-      ".operational-team__title h2"
-    )
+    // const operationalTitle = document.querySelector(
+    //   ".operational-team__title h2"
+    // )
     setLeaderWidth(leaderTitle.offsetWidth)
-    setOperationalWidth(operationalTitle.offsetWidth)
+    // setOperationalWidth(operationalTitle.offsetWidth)
   }, [])
   return (
     <StyledSection
@@ -79,7 +79,7 @@ const Team = ({ data, setModalActive, setActiveContent }) => {
             )
           })}
         </div>
-        <div className="operational-team">
+        {/* <div className="operational-team">
           <div className="operational-team__title">
             <h2>Leadership team</h2>
           </div>
@@ -123,7 +123,7 @@ const Team = ({ data, setModalActive, setActiveContent }) => {
               </OperationalMembers>
             )
           })}
-        </div>
+        </div> */}
       </div>
       <div className="overlay" />
       <div className="background-image">
