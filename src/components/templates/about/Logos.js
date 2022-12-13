@@ -12,20 +12,35 @@ const Logos = ({ data }) => {
         </div>
         <div className="logos">
           {data.logos.map((logo, index) => {
+            console.log(logo)
             const imageDisplay = getImage(
               logo.logo.localFile.childImageSharp.gatsbyImageData
             )
             const imageAlt = logo.logo.altText
-            return (
-              <StyledLogo>
+
+            const displayLogo = logo.url ? (
+              <div>
+                <a target="_blank" rel="noreferrer" href={logo.url}>
+                  <GatsbyImage
+                    image={imageDisplay}
+                    alt={imageAlt}
+                    layout="fullWidth"
+                    formats={["auto", "webp", "avif"]}
+                  />
+                </a>
+              </div>
+            ) : (
+              <div key={index}>
                 <GatsbyImage
                   image={imageDisplay}
                   alt={imageAlt}
                   layout="fullWidth"
                   formats={["auto", "webp", "avif"]}
                 />
-              </StyledLogo>
+              </div>
             )
+
+            return <StyledLogo key={index}>{displayLogo}</StyledLogo>
           })}
         </div>
       </div>
