@@ -15,7 +15,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const OurClients = ({ data }) => {
-  const [activeList, setActiveList] = useState(1)
+  const [activeList, setActiveList] = useState(null)
 
   const handleSetListActive = item => {
     setActiveList(item)
@@ -68,13 +68,17 @@ const OurClients = ({ data }) => {
                   onClick={() => handleSetListActive(index + 1)}
                 >
                   <h3>
-                    {list.title} <span>&#8594;</span>
+                    {list.title} <span>&#8595;</span>
                   </h3>
                 </div>
               )
             })}
           </div>
-          <div className="client-list-names">
+          <div
+            className={`client-list-names${
+              activeList === null ? " no-active" : ""
+            }`}
+          >
             {data.clientsLists.map((list, i) => {
               return (
                 <ul
@@ -102,7 +106,7 @@ const OurClients = ({ data }) => {
             })}
           </div>
         </div>
-        <div className="bg-graphic" />
+        {/* <div className="bg-graphic" /> */}
       </div>
     </StyledSection>
   )
@@ -115,7 +119,7 @@ const StyledSection = styled.section`
     overflow: hidden;
   }
 
-  .bg-graphic {
+  /* .bg-graphic {
     display: none;
     position: absolute;
     top: 0;
@@ -131,7 +135,7 @@ const StyledSection = styled.section`
       width: 8rem;
       height: 65rem;
     }
-  }
+  } */
 
   .title {
     width: 100%;
@@ -167,26 +171,36 @@ const StyledSection = styled.section`
   }
 
   .client-list-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     position: relative;
     width: calc(100%);
     margin-bottom: 4rem;
 
     @media (min-width: 768px) {
-      width: calc(50%);
-      margin-bottom: 0;
+      flex-wrap: nowrap;
+      width: calc(100%);
+      margin-bottom: 0.5rem;
     }
 
     &__item {
-      width: 100%;
+      flex-grow: 1;
       border: solid 1px #000;
       padding: 3.5rem 7rem;
       cursor: pointer;
 
+      @media (min-width: 768px) {
+        padding: 1rem 2rem;
+      }
+
       h3 {
-        ${H3GunMetal};
+        ${B1GunMetal};
+        width: 100%;
         margin: 0;
         padding: 0;
         text-transform: uppercase;
+        text-align: center;
 
         span {
           color: ${colors.colorAccent};
@@ -209,11 +223,12 @@ const StyledSection = styled.section`
     background-color: ${colors.black};
 
     @media (min-width: 768px) {
-      width: calc(50%);
+      width: calc(100%);
     }
 
     &__group {
       display: none;
+      text-align: center;
 
       li {
         ${B1White};
@@ -232,6 +247,10 @@ const StyledSection = styled.section`
     .active-list-item.client-list-names__group {
       display: block;
     }
+  }
+
+  .client-list-names.no-active {
+    display: none;
   }
 `
 
