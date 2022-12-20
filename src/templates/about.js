@@ -63,23 +63,23 @@ const MemberModal = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 55rem;
+    width: 95vw;
   }
 
   @media (min-width: 1025px) {
-    width: 40vw;
+    width: 90vw;
   }
 
   .modal-image {
     width: 100%;
+    max-width: 40rem;
     margin: auto;
+    border-bottom: 0.4rem solid ${colors.colorSecondary};
   }
 
   .modal-content {
     width: 100%;
     padding: 2rem;
-    border-top: 0.4rem solid ${colors.colorSecondary};
-    text-align: center;
 
     @media (min-width: 768px) {
       padding: 2rem 4rem;
@@ -91,15 +91,18 @@ const MemberModal = styled.div`
 
     h3 {
       ${H4GunMetal};
+      text-align: center;
       text-transform: uppercase;
     }
 
     h4 {
       ${B1GunMetal};
+      text-align: center;
     }
 
     p {
       ${B1GunMetal};
+      text-align: left;
     }
   }
 
