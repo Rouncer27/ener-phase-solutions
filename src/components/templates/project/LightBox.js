@@ -31,19 +31,19 @@ const LightBox = ({
 
   useEffect(() => {
     lightboxSlider?.current?.slickGoTo(parseInt(indexActive))
-  }, [lightboxActive])
+  }, [lightboxActive, indexActive])
 
   return (
     <LightboxStyled lightboxactive={lightboxActive}>
       <div className="wrapper">
         <Slider ref={lightboxSlider} {...settings}>
-          {gallery.map(gal => {
+          {gallery.map((gal, index) => {
             const galImg = getImage(
               gal.localFile.childImageSharp.gatsbyImageData
             )
             const galImgAlt = gal.altText
             return (
-              <div>
+              <div key={index}>
                 <GatsbyImage
                   image={galImg}
                   alt={galImgAlt}

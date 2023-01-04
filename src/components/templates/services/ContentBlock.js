@@ -114,7 +114,7 @@ const ContentBlock = ({ block, index }) => {
           y: 0,
         }
       )
-  }, [])
+  }, [index])
   return (
     <Block
       id={`block-content-tigger-${index}`}
