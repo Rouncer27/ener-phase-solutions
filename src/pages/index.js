@@ -127,6 +127,7 @@ export const homeQuery = graphql`
             truePartnerStats {
               statTitle
               statNumber
+              statPlus
               statIcon {
                 altText
                 sourceUrl

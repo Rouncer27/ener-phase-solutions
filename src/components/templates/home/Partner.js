@@ -15,8 +15,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const Partner = ({ data }) => {
+  console.log("data: ", data)
   useEffect(() => {
-    const items = document.querySelectorAll(".stat-counter")
+    const items = document.querySelectorAll(".stat-number")
+    const plus = document.querySelectorAll(".stat-plus")
+      ? document.querySelectorAll(".stat-plus")
+      : []
+
+    console.log("plus", plus)
 
     gsap
       .timeline({
@@ -41,6 +47,7 @@ const Partner = ({ data }) => {
           },
         },
       })
+      .fromTo(plus, { autoAlpha: 0 }, { autoAlpha: 1 })
 
     function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -90,6 +97,9 @@ const Partner = ({ data }) => {
               stat.statIcon.localFile.childImageSharp.gatsbyImageData
             )
             const imageAlt = stat.statIcon.altText
+
+            console.log("stat.statPlus", stat.statPlus)
+
             return (
               <StyledStat key={index}>
                 <div className="stat-icon">
@@ -101,8 +111,15 @@ const Partner = ({ data }) => {
                   />
                 </div>
                 <div className="stat-content">
-                  <p className="stat-counter">{stat.statNumber}</p>
-                  <p>{stat.statTitle}</p>
+                  <div className="stat-content__wrap">
+                    <p className="stat-counter">
+                      <span className="stat-number">{stat.statNumber}</span>
+                      {stat.statPlus ? (
+                        <span className="stat-plus">&#43;</span>
+                      ) : null}
+                    </p>
+                  </div>
+                  <p className="stat-title">{stat.statTitle}</p>
                 </div>
               </StyledStat>
             )
@@ -110,6 +127,7 @@ const Partner = ({ data }) => {
         </div>
       </div>
       <div className="partner-graphic" />
+      <span className="stat-plus" />
     </StyledSection>
   )
 }
@@ -204,14 +222,26 @@ const StyledStat = styled.div`
     width: 75%;
     text-align: center;
 
-    p:first-of-type {
+    &__wrap {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .stat-counter {
       ${H1LightKhaki};
+      position: relative;
       margin: 0;
     }
 
-    p:last-of-type {
+    .stat-title {
       ${H3White};
       margin: 0;
+    }
+
+    .stat-plus {
+      ${H1LightKhaki};
+      padding-left: 1rem;
     }
   }
 `
