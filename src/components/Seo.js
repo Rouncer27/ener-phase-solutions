@@ -86,7 +86,7 @@ function Seo({ description, lang, meta, title, metaImg, location }) {
         image={siteLogoUrl}
         logo={siteLogoUrl}
         description={description}
-        datePublished="June 15, 2022"
+        datePublished="January 4, 2023"
         canonicalUrl="https://enerphase.com/"
         author=""
         organization="Ener-Phase Solutions"
