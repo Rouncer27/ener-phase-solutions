@@ -43,6 +43,30 @@ module.exports = {
         url: process.env.WORDPRESS_URL,
       },
     },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [""],
+      },
+      pluginConfig: {
+        head: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://enerphase.com/",
+        sitemap: "https://enerphase.com/sitemap/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://enerphase.com/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
