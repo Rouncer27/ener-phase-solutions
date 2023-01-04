@@ -75,6 +75,10 @@ function Seo({ description, lang, meta, title, metaImg, location }) {
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={image} />
         {/* Google Ownership Verification */}
+        <meta
+          name="google-site-verification"
+          content="fwmyklXjFLaB7mxmDGsOlMp8MjkU7mPmeO35Th2bdWo"
+        />
         {/* <meta name="google-site-verification" content="" />
         <meta name="msvalidate.01" content="" /> */}
       </Helmet>
