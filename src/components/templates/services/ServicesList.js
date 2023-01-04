@@ -6,8 +6,6 @@ import {
   standardWrapper,
 } from "../../../styles/helpers"
 
-import quotes from "../../../images/graphic-one.png"
-
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)

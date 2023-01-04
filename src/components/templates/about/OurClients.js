@@ -6,7 +6,6 @@ import {
   H2DarkGreen,
   colors,
   B1GunMetal,
-  H3GunMetal,
   B1White,
 } from "../../../styles/helpers"
 
@@ -58,19 +57,19 @@ const OurClients = ({ data }) => {
           <div className="client-list-nav">
             {data.clientsLists.map((list, index) => {
               return (
-                <div
+                <button
                   className={`client-list-nav__item ${
                     activeList === index + 1 ? "active-list-title" : ""
                   }`}
                   data-item={index + 1}
                   key={index}
-                  role="button"
+                  type="button"
                   onClick={() => handleSetListActive(index + 1)}
                 >
                   <h3>
                     {list.title} <span>&#8595;</span>
                   </h3>
-                </div>
+                </button>
               )
             })}
           </div>
@@ -189,6 +188,7 @@ const StyledSection = styled.section`
       border: solid 1px #000;
       padding: 3.5rem 7rem;
       cursor: pointer;
+      background-color: #fff;
 
       @media (min-width: 768px) {
         padding: 1rem 2rem;

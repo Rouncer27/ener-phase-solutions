@@ -1,11 +1,10 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import LightBox from "./LightBox"
 
 const ProjectGallery = ({ data }) => {
-  const slickSliderGallery = useRef(null)
   const [lightboxActive, setLightboxActive] = useState(false)
   const [indexActive, setIndexActive] = useState(0)
 

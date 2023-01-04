@@ -55,7 +55,14 @@ const LightBox = ({
           })}
         </Slider>
       </div>
-      <div onClick={() => handleCloseLightBox()} className="lightbox-bg" />
+      <div
+        onClick={() => handleCloseLightBox()}
+        onKeyDown={() => handleCloseLightBox()}
+        role="button"
+        aria-label="close loightbox"
+        className="lightbox-bg"
+        tabIndex={0}
+      />
       <div className="btn-close">
         <button onClick={() => handleCloseLightBox()}>&#10005;</button>
       </div>
