@@ -22,7 +22,7 @@ const project = props => {
       <ProjectHeroImage data={props.data.project.project.featuredImage} />
       <ProjectTitle
         title={props.data.project.title}
-        name={props.data.project.project.projectClient}
+        name={props.data.project.projectClient}
       />
       <ProjectWysiwyg
         date={props.data.project.projectCompletion}
