@@ -74,9 +74,26 @@ const Footer = () => {
         </div>
         <div className="foot-copy">
           <p>
-            © {new Date().getFullYear()} &middot; Built with
+            Ener-Phase Solutions © {new Date().getFullYear()} All Rights
+            Reserved. Designed, and developed by{" "}
+            <a
+              title="Switchback Creative - Link will open in new window"
+              target="_blank"
+              rel="noreferrer"
+              href="https://switchbackcreative.ca"
+            >
+              Switchback Creative
+            </a>
+            , Built with
             {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
+            <a
+              title="Gatsby JS - Link will open in new window"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.gatsbyjs.com"
+            >
+              Gatsby
+            </a>
           </p>
         </div>
       </div>
