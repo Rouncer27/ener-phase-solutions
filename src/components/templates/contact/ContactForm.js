@@ -79,7 +79,7 @@ const ContactForm = ({ data }) => {
       bodyFormData.append(field[0], field[1])
     })
 
-    let fl = formData.images.length
+    let fl = formData.images ? formData.images.length : []
     let i = 0
 
     while (i < fl) {
