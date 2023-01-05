@@ -12,12 +12,12 @@ import {
 
 const ProjectWysiwyg = ({ date, content }) => {
   const options = { year: "numeric", month: "long", day: "numeric" }
-  const postDate = new Date(date).toLocaleDateString(undefined, options)
+  // const postDate = new Date(date).toLocaleDateString(undefined, options)
   return (
     <StyledSection>
       <div className="wrapper">
         <div className="date">
-          <p>{postDate}</p>
+          <p>{date}</p>
         </div>
         <div className="wysiwyg">
           <div dangerouslySetInnerHTML={{ __html: content }} />
