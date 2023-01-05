@@ -11,6 +11,7 @@ import {
 } from "../../../styles/helpers"
 
 const ProjectWysiwyg = ({ date, content }) => {
+  console.log("date: ", date)
   // const options = { year: "numeric", month: "long", day: "numeric" }
   // const postDate = new Date(date).toLocaleDateString(undefined, options)
   return (

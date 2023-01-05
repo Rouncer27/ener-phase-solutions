@@ -11,6 +11,7 @@ import ProjectGallery from "../components/templates/project/ProjectGallery"
 
 const project = props => {
   const { seoInfo } = props.data
+  console.log("props.data.project.project: ", props.data.project.project)
   return (
     <Layout>
       <Seo
@@ -25,7 +26,7 @@ const project = props => {
         name={props.data.project.projectClient}
       />
       <ProjectWysiwyg
-        date={props.data.project.projectCompletion}
+        date={props.data.project.project.projectCompletion}
         content={props.data.project.project.projectContent}
       />
       {props.data.project.project.projectGallery && (
