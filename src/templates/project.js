@@ -25,7 +25,7 @@ const project = props => {
         name={props.data.project.project.projectClient}
       />
       <ProjectWysiwyg
-        date={props.data.project.date}
+        date={props.data.project.projectCompletion}
         content={props.data.project.project.projectContent}
       />
       {props.data.project.project.projectGallery && (
