@@ -81,7 +81,7 @@ const Team = ({ data, setModalActive, setActiveContent }) => {
         </div>
         <div className="operational-team">
           <div className="operational-team__title">
-            <h2>Leadership team</h2>
+            <h2>Operational Team</h2>
           </div>
           {data.operationalTeamMembers.map((operational, index) => {
             const imageDisplay = getImage(
