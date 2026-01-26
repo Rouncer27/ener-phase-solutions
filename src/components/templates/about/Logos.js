@@ -77,9 +77,11 @@ const StyledSection = styled.section`
 
 const StyledLogo = styled.div`
   width: calc(50%);
+  padding: 2rem 1rem;
 
   @media (min-width: 768px) {
     width: calc(33.33333333%);
+    padding: 2rem 1rem;
   }
 
   @media (min-width: 1025px) {
