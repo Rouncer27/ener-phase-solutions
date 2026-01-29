@@ -41,21 +41,8 @@ const Footer = () => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    title="Follow us on Twitter - Link will open in new window"
-                    href={`https://twitter.com`}
-                  >
-                    <i>
-                      <Twitter />
-                      <span className="visuallyhidden">Twitter</span>
-                    </i>
-                  </a>
-                </StyledIcon>
-                <StyledIcon>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
                     title="Follow us on Linkedin - Link will open in new window"
-                    href={`https://linkedin.com`}
+                    href={`https://www.linkedin.com/company/ener-phase-solutions-ltd`}
                   >
                     <i>
                       <Linkedin />
