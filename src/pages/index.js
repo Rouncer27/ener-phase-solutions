@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Hero from "../components/templates/home/Hero"
+import Neta from "../components/templates/home/Neta"
 import Trust from "../components/templates/home/Trust"
 import ThreeBoxes from "../components/templates/home/ThreeBoxes"
 import Partner from "../components/templates/home/Partner"
@@ -16,6 +17,7 @@ const IndexPage = props => {
   const hero = props?.data?.hero?.template?.homeTemplate
     ? props?.data?.hero?.template?.homeTemplate
     : null
+  const neta = props?.data?.neta?.template?.homeTemplate
   const trust = props?.data?.trust?.template?.homeTemplate
   const threeBoxes = props?.data?.threeBoxes?.template?.homeTemplate
   const partner = props?.data?.partner?.template?.homeTemplate
@@ -33,6 +35,7 @@ const IndexPage = props => {
         location={props.location.pathname}
       />
       <Hero data={hero} />
+      <Neta data={neta} />
       <Trust data={trust} />
       <ThreeBoxes data={threeBoxes} />
       <Partner data={partner} />
@@ -76,6 +79,26 @@ export const homeQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    neta: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            netaLogo {
+              altText
+              sourceUrl
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 2500)
+                }
+              }
+            }
+            netaWebsite
           }
         }
       }
