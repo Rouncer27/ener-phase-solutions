@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { standardWrapper } from "../../../styles/helpers"
+import { B1Black, H3GunMetal, standardWrapper } from "../../../styles/helpers"
 
 const Neta = ({ data }) => {
   const imageDisplay = getImage(
@@ -12,6 +12,12 @@ const Neta = ({ data }) => {
     <StyledLogo>
       <div className="wrapper">
         <div className="neta-logo">
+          <div>
+            <p>
+              Ener-Phase is a <br />
+              NETA Accredited Company.
+            </p>
+          </div>
           <div className="neta-logo-wrapper">
             <a target="_blank" rel="noreferrer" href={data.netaWebsite}>
               <GatsbyImage
@@ -35,6 +41,12 @@ const StyledLogo = styled.div`
 
   .neta-logo {
     width: 100%;
+
+    p {
+      ${H3GunMetal};
+      margin: 0;
+      text-align: center;
+    }
 
     &-wrapper {
       max-width: 40rem;
